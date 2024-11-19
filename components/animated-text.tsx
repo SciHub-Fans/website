@@ -3,6 +3,7 @@
 import useBreakpoint from "@/hooks/use-breakpiont";
 import { motion } from "framer-motion";
 import { useState, useRef } from "react";
+import { Icons } from "./icons";
 
 const AnimatedText = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -31,6 +32,9 @@ const AnimatedText = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+      <div className="hidden lg:block absolute right-[126px] top-[-123px] z-10">
+        <Icons.crow2 className="w-[102px] h-[163px]" />
+      </div>
       <span className="text-white [-webkit-text-stroke-width:1] [-webkit-text-stroke-color:#FFF] font-normal leading-[normal]">
         $scihub
       </span>
