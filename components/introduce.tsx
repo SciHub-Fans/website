@@ -18,7 +18,7 @@ const SECTIONS = [
     }
 ]
 
-const Card = ({title, description}: {title: string, description: string}) => {
+const Card = ({title, description, index}: {title: string, description: string, index: number}) => {
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -29,7 +29,10 @@ const Card = ({title, description}: {title: string, description: string}) => {
         boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
         transition: { duration: 0.2 }
       }}
-      transition={{ duration: 0.5 }}
+      transition={{ 
+        duration: 0.5,
+        delay: index * 0.2 // 每个卡片延迟0.2秒
+      }}
       className="flex flex-col p-10 gap-3 items-start [background:rgba(255,255,255,0.12)] backdrop-blur p-10 rounded-3xl"
     >
       <div className="self-stretch text-white text-[22px] font-bold leading-[160%]">{title}</div>
@@ -92,6 +95,7 @@ const Introduce = () => {
             key={index} 
             title={section.title} 
             description={section.description} 
+            index={index}
           />
         ))}
       </div>

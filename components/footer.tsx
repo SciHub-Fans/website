@@ -1,10 +1,23 @@
+import Link, { LinkProps } from "next/link";
+import TextBorderAnimation from "./animata/text/text-border-animation";
 import { Icons } from "./icons";
+
+const FooterLink = ({ text, ...props }: { text: string } & LinkProps) => {
+  return (
+    <Link {...props}>
+      <TextBorderAnimation
+        text={text}
+        className="text-white text-base font-normal leading-[160%]"
+      />
+    </Link>
+  );
+};
 
 const Footer = () => {
   return (
     <footer
       id="footer"
-      className="w-full bg-[url('/footer-background.png')] bg-cover bg-no-repeat flex flex-col mt-[120px]"
+      className="w-full bg-[url('/images/footer-background.png')] bg-cover bg-no-repeat flex flex-col mt-[120px]"
     >
       <div className="flex flex-col md:flex-row">
         <div className="flex flex-col items-start gap-3 flex-[1_0_0] backdrop-blur-[20px] p-6 md:p-12">
@@ -28,15 +41,9 @@ const Footer = () => {
           <div className="text-[#E32D2D] text-sm font-bold leading-[160%]">
             RESOURCES
           </div>
-          <div className="text-white text-base font-normal leading-[160%]">
-            Documentation
-          </div>
-          <div className="text-white text-base font-normal leading-[160%]">
-            Smart Contract
-          </div>
-          <div className="text-white text-base font-normal leading-[160%]">
-            Official Donation
-          </div>
+          <FooterLink href="/documentation" text="Documentation" />
+          <FooterLink href="/smart-contract" text="Smart Contract" />
+          <FooterLink href="/official-donation" text="Official Donation" />
         </div>
       </div>
       <div className="text-[#E32D2D] text-base font-bold leading-[160%] py-4 px-6 md:px-0 text-center">
