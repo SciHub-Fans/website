@@ -8,11 +8,13 @@ import Introduce from "@/components/introduce";
 import Slogan from "@/components/slogan";
 import CopyFam from "@/components/copy-fam";
 import Disclaimer from "@/components/disclaimer";
+import { MatrixRain } from "@/components/animata/MatrixRain";
 
 export default function Home() {
   return (
     <div className="min-h-screen w-screen bg-black text-white">
-      <div className="container max-w-[1600px] mx-auto">
+      <MatrixRain />
+      <div className="container relative z-1 max-w-[1600px] mx-auto">
         <Header />
         <Hero />
         <Disclaimer />

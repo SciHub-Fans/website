@@ -118,7 +118,23 @@ const TimelineItem = ({
 
 export const Timeline = () => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
   const items = TIMELINE_ITEMS;
+
+  const handleMouseEnter = () => {
+    const timeout = setTimeout(() => {
+      setIsExpanded(true);
+    }, 500); // 500ms 的延迟
+    setTimeoutId(timeout);
+  };
+
+  const handleMouseLeave = () => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+      setTimeoutId(null);
+    }
+    setIsExpanded(false);
+  };
 
   const getVisibleItems = () => {
     if (items.length <= 5 || isExpanded) return items;
@@ -136,8 +152,8 @@ export const Timeline = () => {
   return (
     <div
       className="w-full flex flex-col gap-3"
-      onMouseEnter={() => setIsExpanded(true)}
-      onMouseLeave={() => setIsExpanded(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <AnimatePresence initial={false} mode="sync">
         {visibleItems.map((item, index) => {

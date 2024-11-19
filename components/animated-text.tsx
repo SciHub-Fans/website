@@ -26,13 +26,45 @@ const AnimatedText = () => {
     return 0;
   };
 
+  const glowVariants = {
+    initial: {
+      background: "linear-gradient(90deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.12) 100%)",
+      boxShadow: "0px 0px 0px 0px rgba(255,255,255,0)",
+      border: "0.35px solid rgba(255,255,255,0)"
+    },
+    hover: {
+      background: [
+        "linear-gradient(90deg, rgba(255,255,255,0.12) -100%, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.12) 100%)",
+        "linear-gradient(90deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.3) 100%, rgba(255,255,255,0.12) 200%)",
+      ],
+      boxShadow: "0px 0px 13.98px 0px rgba(255,255,255,0.16)",
+      border: "0.35px solid rgba(255,255,255,0.5)",
+      transition: {
+        background: {
+          repeat: Infinity,
+          duration: 2,
+          ease: "linear",
+          repeatType: "reverse",
+        },
+        boxShadow: {
+          duration: 0.3
+        },
+        border: {
+          duration: 0.3
+        }
+      }
+    }
+  };
+
   return (
-    <div
+    <motion.div
       ref={containerRef}
+      variants={glowVariants}
+      initial="initial"
+      animate={isHovered ? "hover" : "initial"}
       className={cn(
-        "relative w-full inline-flex shrink-0 text-[20px] md:text-[44px] lg:text-[58px] xl:text-[80px] [background:rgba(255,255,255,0.12)] backdrop-blur-[20px] rounded-full items-center px-[32px] py-[22px] md:px-[69px] md:py-[48px] lg:px-[108px] lg:py-[64px] xl:py-[54px]",
-        isHovered &&
-          "border-[0.35px] border-solid [border-image-source:conic-gradient(from_90deg_at_50%_50%,rgba(255,255,255,0)_0deg,#FFFFFF_176.4deg,rgba(255,255,255,0)_360deg)] backdrop-blur-[13.98px] shadow-[0px_0px_13.98px_0px_#FFFFFF29]"
+        "relative w-full inline-flex shrink-0 text-[20px] md:text-[44px] lg:text-[58px] xl:text-[80px] backdrop-blur-[20px] rounded-full items-center px-[32px] py-[22px] md:px-[69px] md:py-[48px] lg:px-[108px] lg:py-[64px] xl:py-[54px]",
+        "border-solid"
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -59,7 +91,7 @@ const AnimatedText = () => {
           UNLOCK SCIENCE
         </span>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 
