@@ -111,12 +111,12 @@ const DonationProgress = () => {
                 <ol>
                   <span className="text-[#E32D2D]">Total Commitment</span>: 200
                   million $scihub tokens, representing 20% of the total supply,
-                  will be donated to support Sci-Hub's mission.
+                  will be donated to support Sci-Hub&apos;s mission.
                 </ol>
                 <ol>
                   <span className="text-[#E32D2D]">Initial Donation</span>: 110
                   million tokens (11% of total supply) have already been
-                  transferred to Alexandra Elbakyan's wallet.
+                  transferred to Alexandra Elbakyan&apos;s wallet.
                 </ol>
                 <ol>
                   <span className="text-[#E32D2D]">Monthly Contributions</span>:
