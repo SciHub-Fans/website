@@ -11,7 +11,7 @@ import CopyFam from "@/components/copy-fam";
 export default function Home() {
   return (
     <div className="min-h-screen w-screen bg-black text-white">
-      <div className="container max-w-[1600px] mx-auto">
+      <div className="container max-w-[1600px] mx-auto bg-[url('/images/index-background.png')] bg-cover bg-center bg-no-repeat bg-fixed">
         <Header />
         <Hero />
         <Introduce />
