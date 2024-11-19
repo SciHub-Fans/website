@@ -4,6 +4,7 @@ import useBreakpoint from "@/hooks/use-breakpiont";
 import { motion } from "framer-motion";
 import { useState, useRef } from "react";
 import { Icons } from "./icons";
+import { cn } from "@/lib/utils";
 
 const AnimatedText = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -28,7 +29,11 @@ const AnimatedText = () => {
   return (
     <div
       ref={containerRef}
-      className="relative w-full inline-flex shrink-0 text-[20px] md:text-[44px] lg:text-[58px] xl:text-[80px] [background:rgba(255,255,255,0.12)] backdrop-blur-[20px] rounded-full items-center px-[32px] py-[22px] md:px-[69px] md:py-[48px] lg:px-[108px] lg:py-[64px] xl:py-[54px]"
+      className={cn(
+        "relative w-full inline-flex shrink-0 text-[20px] md:text-[44px] lg:text-[58px] xl:text-[80px] [background:rgba(255,255,255,0.12)] backdrop-blur-[20px] rounded-full items-center px-[32px] py-[22px] md:px-[69px] md:py-[48px] lg:px-[108px] lg:py-[64px] xl:py-[54px]",
+        isHovered &&
+          "border-[0.35px] border-solid [border-image-source:conic-gradient(from_90deg_at_50%_50%,rgba(255,255,255,0)_0deg,#FFFFFF_176.4deg,rgba(255,255,255,0)_360deg)] backdrop-blur-[13.98px] shadow-[0px_0px_13.98px_0px_#FFFFFF29]"
+      )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
