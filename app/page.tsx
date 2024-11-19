@@ -6,6 +6,7 @@ import Header from "@/components/header";
 import Hero from "@/components/hero";
 import Introduce from "@/components/introduce";
 import Slogan from "@/components/slogan";
+import CopyFam from "@/components/copy-fam";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <Introduce />
         <Slogan />
         <DonationProgress />
+        <CopyFam />
         <FAQ />
         <Footer />
       </div>
