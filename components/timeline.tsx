@@ -2,57 +2,65 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Icons } from "./icons";
+import Link from "next/link";
 
 const TIMELINE_ITEMS = [
   {
     status: "completed",
     time: "November 16th, 2024",
-    supply: "110M $scihub ($6.72M, 11% of the total supply)",
+    supply: "100M $scihub ($6.72M, 10% of the total supply)",
+    href: "https://solscan.io/tx/3xRdf7voPP3VKiuxhd88QUe6TGwCrc1wc2nApDoBDtwrvAWjdumR2G4USoEdF15cHqPEWWtysSixdBi7SQ3B8WCz"
+  },
+  {
+    status: "completed",
+    time: "November 16th, 2024",
+    supply: "10M $scihub (1% of the total supply)",
+    href: "https://solscan.io/tx/bU78q5M3qBLeCYHjdpEdQK1GqiuEreNT2PS6bGLphfscYffe2GRmD2deYz7upB71HCxa9RkK6eYDLKhLLKDh6pv"
   },
   {
     status: "upcoming",
     time: "December 16, 2024",
-    supply: "1% Distribution",
+    supply: "10M $scihub (1% of the total supply)",
   },
   {
     status: "pending",
     time: "January 16, 2025",
-    supply: "1% Distribution",
+    supply: "10M $scihub (1% of the total supply)",
   },
   {
     status: "pending",
     time: "February 16, 2025",
-    supply: "1% Distribution",
+    supply: "10M $scihub (1% of the total supply)",
   },
   {
     status: "pending",
     time: "March 16, 2025",
-    supply: "1% Distribution",
+    supply: "10M $scihub (1% of the total supply)",
   },
   {
     status: "pending",
     time: "April 16, 2025",
-    supply: "1% Distribution",
+    supply: "10M $scihub (1% of the total supply)",
   },
   {
     status: "pending",
     time: "May 16, 2025",
-    supply: "1% Distribution",
+    supply: "10M $scihub (1% of the total supply)",
   },
   {
     status: "pending",
     time: "June 16, 2025",
-    supply: "1% Distribution",
+    supply: "10M $scihub (1% of the total supply)",
   },
   {
     status: "pending",
     time: "July 16, 2025",
-    supply: "1% Distribution",
+    supply: "10M $scihub (1% of the total supply)",
   },
   {
     status: "pending",
     time: "August 16, 2025",
-    supply: "1% Distribution",
+    supply: "10M $scihub (1% of the total supply)",
   },
 ];
 
@@ -60,10 +68,12 @@ const TimelineItem = ({
   status,
   time,
   supply,
+  href,
 }: {
   status: string;
   time: string;
   supply: string;
+  href?: string;
 }) => {
   return (
     <div
@@ -97,9 +107,13 @@ const TimelineItem = ({
       <div className="flex flex-col md:flex-row md:items-center gap-4">
         {status === "completed" && (
           <>
-            <span className="text-[rgba(9,195,39,0.60)] text-base font-medium leading-[140%] underline decoration-solid [text-decoration-skip-ink:none] decoration-auto underline-offset-auto [text-underline-position:from-font]">
+            <Link
+              href={href}
+              target="_blank"
+              className="text-[rgba(9,195,39,0.60)] text-base font-medium leading-[140%] underline decoration-solid [text-decoration-skip-ink:none] decoration-auto underline-offset-auto [text-underline-position:from-font]"
+            >
               VIEW
-            </span>
+            </Link>
             <span className="text-[#09C327] [font-family:'SF_Mono'] text-base font-medium leading-[140%]">
               COMPLETED
             </span>
@@ -141,7 +155,7 @@ export const Timeline = () => {
 
     // 显示前2个和后2个
     return [
-      ...items.slice(0, 2),
+      ...items.slice(0, 3),
       { isEllipsis: true, id: "ellipsis" } as any,
       ...items.slice(-2),
     ];
@@ -170,7 +184,7 @@ export const Timeline = () => {
 
           return (
             <motion.div
-              key={`${item.time}-${item.status}`}
+              key={`${item.time}-${item.status}-${index}`}
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}

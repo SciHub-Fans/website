@@ -6,6 +6,7 @@ import { Icons } from "./icons";
 import AnimatedText from "./animated-text";
 import { shortenAddress } from "@/lib/utils";
 import { useCopy } from "@/hooks/use-copy";
+import Link from "next/link";
 
 const Hero = () => {
   const { copied, copy } = useCopy();
@@ -73,16 +74,25 @@ const Hero = () => {
           whileTap={{ scale: 0.98 }}
           className="flex justify-center items-center gap-2.5 self-stretch [background:rgba(255,255,255,0.16)] hover:bg-white/25 backdrop-blur-[20px] px-8 py-4 rounded-[44px] transition-colors duration-300"
         >
-          <span className="text-white text-center text-base font-normal leading-[160%]">
+          <Link
+            href="https://t.me/WTFDeSci"
+            target="_blank"
+            className="text-white text-center text-base font-normal leading-[160%]"
+          >
             Join our group
-          </span>
+          </Link>
         </motion.button>
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           className="flex justify-center items-center gap-2.5 self-stretch border px-8 py-4 rounded-[44px] border-solid border-white hover:bg-white hover:text-black transition-colors duration-300"
         >
-          <span>Buy $scihub</span>
+          <Link
+            href="https://gmgn.ai/sol/token/GxdTh6udNstGmLLk9ztBb6bkrms7oLbrJp5yzUaVpump"
+            target="_blank"
+          >
+            Buy $scihub
+          </Link>
           <Icons.buy className="w-6 h-6" />
         </motion.button>
       </motion.div>

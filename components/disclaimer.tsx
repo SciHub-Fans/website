@@ -32,7 +32,7 @@ export const Disclaimer = () => {
         >
           <ol className="list-decimal">
             <li>
-              $scihub is a community meme token, launched by an anonymous dev.
+              $scihub is a community meme token.
             </li>
             <li>
               $scihub is not an official Sci-Hub token, is not affiliated with
