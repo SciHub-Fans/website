@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Icons } from "./icons";
 import Title from "./title";
-import Image from "next/image";
 
 const DonationProgress = () => {
   return (
