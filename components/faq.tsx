@@ -94,7 +94,7 @@ const items = [
     question: "What is $SCIHUB?",
     answer: (
       <div className="flex flex-col gap-8">
-        <p>
+        <p className="text-[#A5A5A5]">
           Originally launched by an anonymous developer on the Pump.fun platform
           on the Solana network, the $scihub meme token was quickly discovered
           and embraced by the community. In a remarkable{" "}
@@ -104,7 +104,7 @@ const items = [
           Sci-Hub’s founder, Alexandra Elbakyan, to support her exceptional
           contributions to open science.
         </p>
-        <p>
+        <p className="text-[#A5A5A5]">
           This donation plan is still ongoing, demonstrating the community’s
           commitment to empowering decentralized science. Moving forward, the
           $scihub community is set to become the{" "}
@@ -120,14 +120,14 @@ const items = [
     question: "Donation Plan",
     answer: (
       <div className="flex flex-col gap-8">
-        <p>
+        <p className="text-[#A5A5A5]">
           The $scihub community has committed to donating 20% of the total token
           supply to Sci-Hub founder Alexandra Elbakyan in recognition of her
           outstanding contributions to open science.
         </p>
 
-        <div className="flex flex-col gap-2">
-          <p>💡 Key Details:</p>
+        <div className="text-[#A5A5A5] flex flex-col gap-2">
+          <p className="">💡 Key Details:</p>
           <ul className="list-decimal pl-6">
             <li>
               Initial Donation: 11% of the total supply (110,000,000 tokens) has
@@ -147,7 +147,7 @@ const items = [
           </ul>
         </div>
 
-        <p>
+        <p className="text-[#A5A5A5]">
           This structured donation ensures sustainable support for Sci-Hub while
           maintaining trust and stability within the $scihub community.
           Together, we are funding the future of open science! 🚀✨
@@ -159,7 +159,7 @@ const items = [
     question: "Relationship with Sci-Hub",
     answer: (
       <div>
-        <p>
+        <p className="text-[#A5A5A5]">
           $scihub community has established a donation relationship with the
           founder of Sci-Hub platform, Alexandra Elbakyan, committing 20% of the
           total token supply to be donated through a staged approach. $scihub is
@@ -172,7 +172,7 @@ const items = [
 ];
 const FAQ = () => {
   return (
-    <div className="relative flex flex-col w-full items-center mt-32">
+    <div className="sci-container relative flex flex-col w-full items-center mt-32">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -184,7 +184,7 @@ const FAQ = () => {
 
       <Title>FAQ</Title>
 
-      <div className="mt-[48px] flex flex-col gap-4 w-full">
+      <div className="mt-[60px] flex flex-col gap-4 w-full">
         {items.map((item, index) => (
           <motion.div
             key={item.question}

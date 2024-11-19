@@ -2,7 +2,7 @@ import { Icons } from "./icons";
 
 const Header = () => {
   return (
-    <div className="h-[104px] w-full flex justify-between items-center">
+    <div className="sci-container h-[104px] w-full flex justify-between items-center">
       <div className="flex h-14 justify-center items-center gap-2.5 [background:rgba(255,255,255,0.12)] backdrop-blur-[20px] px-8 py-4 rounded-[215.5px]">
         $scihub
       </div>

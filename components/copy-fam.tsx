@@ -53,11 +53,11 @@ const CopyFam = () => {
   const { copied, copy } = useCopy();
 
   return (
-    <div className="relative flex flex-col w-full items-center mt-32">
+    <div className="sci-container relative flex flex-col w-full items-center mt-32">
       <ThreeSVG />
       <Title>JOIN THE FAM</Title>
 
-      <div className="mt-[48px] inline-flex justify-center items-center gap-6 [background:rgba(255,255,255,0.12)] backdrop-blur-[20px] px-12 py-8 rounded-3xl">
+      <div className="mt-[60px] w-full md:w-auto flex flex-col md:flex-row justify-center items-center gap-6 [background:rgba(255,255,255,0.12)] backdrop-blur-[5px] px-12 py-8 rounded-3xl">
         <span className="text-white text-[22px] font-bold leading-[160%] uppercase">
           Wear the Signal:{" "}
         </span>

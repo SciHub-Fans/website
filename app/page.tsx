@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <div className="min-h-screen w-screen bg-black text-white">
       <MatrixRain />
-      <div className="container relative z-1 max-w-[1600px] mx-auto">
+      <div className="relative z-1">
         <Header />
         <Hero />
         <Disclaimer />

@@ -16,7 +16,7 @@ const Hero = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="flex flex-col items-center justify-center gap-8 h-[calc(100vh-104px)]"
+      className="sci-container flex flex-col items-center justify-center gap-8 h-[calc(100vh-104px)]"
     >
       <motion.div
         initial={{ scale: 0 }}

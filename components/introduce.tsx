@@ -5,16 +5,16 @@ import Title from "./title";
 
 const SECTIONS = [
     {
-        title: "SCIENTIFIC REVOLUTION",
-        description: "In an era where knowledge is locked behind paywalls, Sci-Hub emerged as a beacon of hope. Through blockchain technology, we're taking this revolution to the next level, ensuring research remains accessible forever."
+        title: "What is Sci-Hub",
+        description: "Born from Alexandra Elbakyan’s fight against unfair paywalls on knowledge, Sci-Hub is nothing short of revolutionary. It shattered barriers, rewrote the rules of access to scientific literature, and took on the giants of copyright laws. A beacon of hope, it stands tall as a symbol of free knowledge for everyone."
     },
     {
-        title: "DESCIENCE VISION",
-        description: "We're building bridges between traditional academia and Web3. Our mission is to create a decentralized ecosystem where research can be funded, peer-reviewed, and shared without traditional gatekeepers."
+        title: "Donation to Sci-Hub",
+        description: "The $scihub community has proudly pledged 20% of the total token supply to Sci-Hub, significantly supporting its mission to democratize knowledge. This historic donation ensures sustained funding, empowering Sci-Hub to continue its revolutionary work in advancing open science."
     },
     {
-        title: "QUANTUM LEAP",
-        description: "Just as quantum mechanics revolutionized physics, blockchain will transform scientific publishing. Every $SCIHUB token represents a vote for open science and decentralized knowledge sharing."
+        title: "DeSci Community",
+        description: "The $scihub DeSci community is a global movement inspired by Sci-Hub, dedicated to decentralizing science and democratizing knowledge for all. By empowering researchers, funding open access initiatives, and revolutionizing the way science is shared, this community aims to create a more equitable and accessible scientific landscape. 🚀 "
     }
 ]
 
@@ -42,7 +42,7 @@ const Card = ({title, description}: {title: string, description: string}) => {
 
 const Introduce = () => {
   return (
-    <div className="relative flex flex-col w-full items-center">
+    <div className="sci-container relative flex flex-col w-full items-center z-[2]">
       <svg
         width="232"
         height="147"
@@ -86,7 +86,7 @@ const Introduce = () => {
 
       <Title>DECENTRALIZED SCIENCE</Title>
 
-      <div className="flex flex-col md:flex-row gap-8 mt-[48px]">
+      <div className="flex flex-col md:flex-row gap-8 mt-[60px]">
         {SECTIONS.map((section, index) => (
           <Card 
             key={index} 

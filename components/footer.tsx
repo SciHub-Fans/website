@@ -4,10 +4,10 @@ const Footer = () => {
   return (
     <footer
       id="footer"
-      className="w-full bg-[url('/footer-background.png')] bg-cover bg-no-repeat flex flex-col"
+      className="w-full bg-[url('/footer-background.png')] bg-cover bg-no-repeat flex flex-col mt-[120px]"
     >
       <div className="flex flex-col md:flex-row">
-        <div className="flex flex-col justify-center items-start gap-3 flex-[1_0_0] backdrop-blur-[20px] p-6 md:p-12">
+        <div className="flex flex-col items-start gap-3 flex-[1_0_0] backdrop-blur-[20px] p-6 md:p-12">
           <div className="text-[#E32D2D] text-sm font-bold leading-[160%]">
             ABOUT $SCIHUB
           </div>
@@ -24,7 +24,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col justify-center items-start gap-3 flex-[1_0_0] backdrop-blur-[20px] p-6 md:p-12">
+        <div className="flex flex-col items-start gap-3 flex-[1_0_0] backdrop-blur-[20px] p-6 md:p-12">
           <div className="text-[#E32D2D] text-sm font-bold leading-[160%]">
             RESOURCES
           </div>

@@ -5,13 +5,18 @@ import Title from "./title";
 import { Timeline } from "./timeline";
 import { useRef } from "react";
 import ProgressBar from "./progress-bar";
+import { Icons } from "./icons";
+import Link from "next/link";
 
 const DonationProgress = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <div ref={ref} className="relative flex flex-col w-full items-center">
+    <div
+      ref={ref}
+      className="sci-container relative flex flex-col w-full items-center"
+    >
       <svg
         width="228"
         height="147"
@@ -54,7 +59,7 @@ const DonationProgress = () => {
       </svg>
       <Title>DONATION PROGRESS</Title>
 
-      <div className="flex flex-col w-full gap-8 mt-[48px] items-center gap-6 [background:rgba(255,255,255,0.12)] backdrop-blur-[20px] px-4 py-6 md:px-8 md:py-10 rounded-3xl">
+      <div className="flex flex-col w-full gap-8 mt-[60px] items-center gap-6 [background:rgba(255,255,255,0.12)] backdrop-blur-[20px] px-4 py-6 md:px-8 md:py-10 rounded-3xl">
         <motion.div
           className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 w-full"
           initial={{ opacity: 0, y: 20 }}
@@ -62,7 +67,10 @@ const DonationProgress = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="text-white text-[18px] md:text-[22px] font-bold leading-[160%]">
-            <span className="text-[#E32D2D] text-[20px] md:text-[32px]">11%</span> of 20% total allocation
+            <span className="text-[#E32D2D] text-[20px] md:text-[32px]">
+              11%
+            </span>{" "}
+            of 20% total allocation
           </div>
           <div className="flex flex-col gap-1 md:text-right">
             <span className="text-[#E32D2D] text-sm font-bold leading-[160%] opacity-60">
@@ -77,40 +85,48 @@ const DonationProgress = () => {
         <ProgressBar isInView={isInView} />
 
         <motion.div
-          className="hidden md:grid w-full h-auto relative grid-rows-2 grid-flow-col gap-4"
+          className="hidden md:flex w-full h-auto relative"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <div className="row-span-2 flex flex-col justify-center items-start gap-3 flex-[1_0_0] bg-[#323232] backdrop-blur-[20px] p-8 rounded-2xl transition-all duration-300 hover:bg-[#3a3a3a] hover:scale-[1.02] hover:shadow-lg cursor-pointer">
-            <div className="self-stretch text-white text-2xl font-bold leading-[160%] uppercase">
-              previous
+          <div className="flex flex-col justify-center items-start gap-3 flex-[1_0_0] bg-[#323232] backdrop-blur-[20px] p-8 rounded-2xl transition-all duration-300 hover:bg-[#3a3a3a] hover:scale-[1.02] hover:shadow-lg cursor-pointer">
+            <div className="w-full flex justify-between items-start gap-3 flex-[1_0_0]">
+              <div className="self-stretch text-white text-2xl font-bold leading-[160%] uppercase">
+                Donation plan
+              </div>
+              <Link
+                href="https://x.com/lookonchain/status/1858170953425121547"
+                target="_blank"
+                className="flex flex-col items-start [background:#1F1F1F] p-2 rounded-lg"
+              >
+                <Icons.x className="w-4 h-4" />
+              </Link>
             </div>
             <div className="self-stretch text-[#A5A5A5] text-sm font-normal leading-[160%]">
-              @0xAA_Science represents the $scihub community and has reached a
-              20% $scihub donation plan with Alexandra Elbakyan (founder of
-              Sci-Hub, @ringo_ring). In total, 200 million $scihub tokens will
-              be donated, accounting for 20% of the total circulation. Alexandra
-              has committed to selling a maximum of 1% (10 million tokens) per
-              month and actively supporting the development of $scihub.
-            </div>
-          </div>
-          <div className="bg-[#323232] backdrop-blur-[20px] p-8 rounded-2xl transition-all duration-300 hover:bg-[#3a3a3a] hover:scale-[1.02] hover:shadow-lg cursor-pointer">
-            <div className="self-stretch text-white text-2xl font-bold leading-[160%] uppercase">
-              MONTHLY PLAN
-            </div>
-            <div className="self-stretch text-[#A5A5A5] text-sm font-normal leading-[160%]">
-              1% of total supply donated monthly to support Sci-Hub's mission of
-              making knowledge accessible to everyone.
-            </div>
-          </div>
-          <div className="bg-[#323232] backdrop-blur-[20px] p-8 rounded-2xl transition-all duration-300 hover:bg-[#3a3a3a] hover:scale-[1.02] hover:shadow-lg cursor-pointer">
-            <div className="self-stretch text-white text-2xl font-bold leading-[160%] uppercase">
-              DONATION SCHEDULE
-            </div>
-            <div className="self-stretch text-[#A5A5A5] text-sm font-normal leading-[160%]">
-              Fixed schedule: 16th of each month. Transparent and verifiable
-              on-chain transactions.
+              The $scihub community has committed to a historic 20% $scihub
+              donation plan in collaboration with Alexandra Elbakyan, the
+              founder of Sci-Hub.
+              <ul className="list-disc [&>li::marker]:text-[#E32D2D]">
+                <ol>
+                  <span className="text-[#E32D2D]">Total Commitment</span>: 200
+                  million $scihub tokens, representing 20% of the total supply,
+                  will be donated to support Sci-Hub's mission.
+                </ol>
+                <ol>
+                  <span className="text-[#E32D2D]">Initial Donation</span>: 110
+                  million tokens (11% of total supply) have already been
+                  transferred to Alexandra Elbakyan's wallet.
+                </ol>
+                <ol>
+                  <span className="text-[#E32D2D]">Monthly Contributions</span>:
+                  Starting{" "}
+                  <span className="text-[#E32D2D]">December 16, 2024</span>, to
+                  commemorate the birth of $scihub, the community will donate <span className="text-[#E32D2D]">1% of
+                  the supply</span> (10 million tokens) every month for the next <span className="text-[#E32D2D]">9
+                  months</span>, totaling <span className="text-[#E32D2D]">90 million tokens</span>.
+                </ol>
+              </ul>
             </div>
           </div>
         </motion.div>
