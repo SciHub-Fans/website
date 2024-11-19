@@ -108,7 +108,7 @@ const TimelineItem = ({
         {status === "completed" && (
           <>
             <Link
-              href={href}
+              href={href!}
               target="_blank"
               className="text-[rgba(9,195,39,0.60)] text-base font-medium leading-[140%] underline decoration-solid [text-decoration-skip-ink:none] decoration-auto underline-offset-auto [text-underline-position:from-font]"
             >
