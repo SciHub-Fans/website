@@ -29,8 +29,8 @@ const sfMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "SciHub Fans",
-  description: "SciHub Fans",
+  title: "$scihub UNLOCK SCIENCE",
+  description: "$scihub UNLOCK SCIENCE",
 };
 
 export default function RootLayout({
