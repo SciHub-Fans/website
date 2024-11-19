@@ -61,7 +61,7 @@ const CopyFam = () => {
       <Title>JOIN THE FAM</Title>
 
       <div className="mt-[48px] inline-flex justify-center items-center gap-6 [background:rgba(255,255,255,0.12)] backdrop-blur-[20px] px-12 py-8 rounded-3xl">
-        <span>Wear the Signal: </span>
+        <span className="text-white text-[22px] font-bold leading-[160%] uppercase">Wear the Signal: </span>
         <span>‍🐦‍⬛🔑</span>
         <Button className="flex justify-center items-center gap-2.5 border px-8 py-4 rounded-[44px] border-solid border-white" onClick={() => {
           navigator.clipboard.writeText("‍🐦‍⬛🔑");
