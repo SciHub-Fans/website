@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     siteName: '$scihub',
     images: [
       {
-        url: '/images/social.jpeg',
+        url: '/images/social.png',
         width: 1200,
         height: 630,
       }
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     title: "$scihub UNLOCK SCIENCE",
     description: "$scihub is a community token dedicated to supporting the most influential science platform, Sci-Hub. Supporting the rebellion against paywalled knowledge, every $scihub token is a vote for open science.",
     creator: '@SciHubFans',
-    images: ['/images/social.jpeg'],
+    images: ['/images/social.png'],
   },
 };
 
