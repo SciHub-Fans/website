@@ -9,6 +9,13 @@ const Header = () => {
       </div>
       <div className="flex gap-4">
         <Link
+          href="https://forum.scihub.fans"
+          target="_blank"
+          className="flex justify-center items-center [background:rgba(255,255,255,0.12)] hover:[background:rgba(255,255,255,0.2)] backdrop-blur-[20px] p-4 rounded-full transition-all duration-300 cursor-pointer"
+        >
+          <Icons.forum className="w-6 h-6" />
+        </Link>
+        <Link
           href="https://t.me/WTFDeSci"
           target="_blank"
           className="flex justify-center items-center [background:rgba(255,255,255,0.12)] hover:[background:rgba(255,255,255,0.2)] backdrop-blur-[20px] p-4 rounded-full transition-all duration-300 cursor-pointer"

@@ -79,7 +79,20 @@ const Hero = () => {
             target="_blank"
             className="text-white text-center text-base font-normal leading-[160%]"
           >
-            Join our group
+            Join Community
+          </Link>
+        </motion.button>
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="flex justify-center items-center gap-2.5 self-stretch [background:rgba(255,255,255,0.16)] hover:bg-white/25 backdrop-blur-[20px] px-8 py-4 rounded-[44px] transition-colors duration-300"
+        >
+          <Link
+            href="https://forum.scihub.fans"
+            target="_blank"
+            className="text-white text-center text-base font-normal leading-[160%]"
+          >
+            Go to Forum
           </Link>
         </motion.button>
         <motion.button

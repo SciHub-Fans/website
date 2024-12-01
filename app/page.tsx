@@ -9,6 +9,7 @@ import Slogan from "@/components/slogan";
 import CopyFam from "@/components/copy-fam";
 import Disclaimer from "@/components/disclaimer";
 import { MatrixRain } from "@/components/animata/MatrixRain";
+import Support from "@/components/support";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         <Disclaimer />
         <Introduce />
         <Slogan />
+        <Support />
         <DonationProgress />
         <CopyFam />
         <FAQ />
