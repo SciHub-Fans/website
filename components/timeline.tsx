@@ -21,7 +21,7 @@ const TIMELINE_ITEMS = [
     status: "completed",
     time: "December 16, 2024",
     supply: "10M $scihub (1% of the total supply)",
-    href: ""
+    href: "https://solscan.io/tx/5Vk1afKAKCvP35AdJJKHEsZdXRoeUK1QcNgKavQ1BA1NxfvirQNGFkyhKBgyDYbN4dYhLXEdE3v4khG5ZafqY6x2"
   },
   {
     status: "upcoming",
