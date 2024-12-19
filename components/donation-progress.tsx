@@ -49,8 +49,8 @@ const DonationProgress = () => {
             y2="186.945"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="white" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="1" stopColor="white" stopOpacity="0" />
           </linearGradient>
           <linearGradient
             id="paint1_linear_163_50"
@@ -60,8 +60,8 @@ const DonationProgress = () => {
             y2="186.945"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="white" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="1" stopColor="white" stopOpacity="0" />
           </linearGradient>
         </defs>
       </svg>

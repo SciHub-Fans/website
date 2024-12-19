@@ -21,7 +21,7 @@ const LineSvg = () => (
         x2="872"
         y2="0.5"
         stroke="url(#paint0_linear_806_72)"
-        stroke-opacity="0.5"
+        strokeOpacity="0.5"
       />
     </g>
     <defs>
@@ -32,9 +32,9 @@ const LineSvg = () => (
         width="904"
         height="33"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feGaussianBlur in="BackgroundImageFix" stdDeviation="8" />
         <feComposite
           in2="SourceAlpha"
@@ -57,7 +57,7 @@ const LineSvg = () => (
         gradientUnits="userSpaceOnUse"
       >
         <stop />
-        <stop offset="0.51" stop-color="white" />
+        <stop offset="0.51" stopColor="white" />
         <stop offset="1" />
       </linearGradient>
     </defs>
@@ -97,8 +97,8 @@ const Support = () => {
             y2="186.945"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="white" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="1" stopColor="white" stopOpacity="0" />
           </linearGradient>
           <linearGradient
             id="paint1_linear_163_43"
@@ -108,8 +108,8 @@ const Support = () => {
             y2="186.945"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="white" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="1" stopColor="white" stopOpacity="0" />
           </linearGradient>
         </defs>
       </svg>

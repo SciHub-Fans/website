@@ -59,7 +59,7 @@ export const Icons = {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(18.9153 11.7732) rotate(90) scale(5.98177 3.27894)"
         >
-          <stop stop-color="#160C00" />
+          <stop stopColor="#160C00" />
           <stop offset="1" />
         </radialGradient>
         <radialGradient
@@ -70,7 +70,7 @@ export const Icons = {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(10.9386 20.9097) rotate(90) scale(11.1777 11.5353)"
         >
-          <stop stop-color="#160C00" />
+          <stop stopColor="#160C00" />
           <stop offset="1" />
         </radialGradient>
         <clipPath id="clip0_807_78">

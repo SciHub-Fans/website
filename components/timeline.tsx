@@ -21,9 +21,10 @@ const TIMELINE_ITEMS = [
     status: "completed",
     time: "December 16, 2024",
     supply: "10M $scihub (1% of the total supply)",
+    href: ""
   },
   {
-    status: "pending",
+    status: "upcoming",
     time: "January 16, 2025",
     supply: "10M $scihub (1% of the total supply)",
   },
@@ -151,11 +152,11 @@ export const Timeline = () => {
   };
 
   const getVisibleItems = () => {
-    if (items.length <= 5 || isExpanded) return items;
+    if (items.length <= 6 || isExpanded) return items;
 
     // 显示前2个和后2个
     return [
-      ...items.slice(0, 3),
+      ...items.slice(0, 4),
       { isEllipsis: true, id: "ellipsis" } as any,
       ...items.slice(-2),
     ];
