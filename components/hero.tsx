@@ -106,6 +106,7 @@ const Hero = () => {
           >
             Buy $scihub
           </Link>
+          <Icons.newLogo className="w-6 h-6" />
           <Icons.buy className="w-6 h-6" />
         </motion.button>
       </motion.div>
