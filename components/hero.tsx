@@ -69,46 +69,47 @@ const Hero = () => {
         transition={{ delay: 0.8 }}
         className="flex flex-col md:flex-row gap-3 md:gap-6 w-full md:w-auto md:mx-auto"
       >
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="flex justify-center items-center gap-2.5 self-stretch [background:rgba(255,255,255,0.16)] hover:bg-white/25 backdrop-blur-[20px] px-8 py-4 rounded-[44px] transition-colors duration-300"
+        <Link
+          href="https://t.me/WTFDeSci"
+          target="_blank"
+          className="text-white text-center text-base font-normal leading-[160%]"
         >
-          <Link
-            href="https://t.me/WTFDeSci"
-            target="_blank"
-            className="text-white text-center text-base font-normal leading-[160%]"
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="flex justify-center items-center gap-2.5 self-stretch [background:rgba(255,255,255,0.16)] hover:bg-white/25 backdrop-blur-[20px] px-8 py-4 rounded-[44px] transition-colors duration-300"
           >
             Join Community
-          </Link>
-        </motion.button>
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="flex justify-center items-center gap-2.5 self-stretch [background:rgba(255,255,255,0.16)] hover:bg-white/25 backdrop-blur-[20px] px-8 py-4 rounded-[44px] transition-colors duration-300"
+          </motion.button>
+        </Link>
+        <Link
+          href="https://forum.scihub.fans"
+          target="_blank"
+          className="text-white text-center text-base font-normal leading-[160%]"
         >
-          <Link
-            href="https://forum.scihub.fans"
-            target="_blank"
-            className="text-white text-center text-base font-normal leading-[160%]"
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="flex justify-center items-center gap-2.5 self-stretch [background:rgba(255,255,255,0.16)] hover:bg-white/25 backdrop-blur-[20px] px-8 py-4 rounded-[44px] transition-colors duration-300"
           >
             Go to Forum
-          </Link>
-        </motion.button>
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="flex justify-center items-center gap-2.5 self-stretch border px-8 py-4 rounded-[44px] border-solid border-white hover:bg-white hover:text-black transition-colors duration-300"
+          </motion.button>
+        </Link>
+
+        <Link
+          href="https://gmgn.ai/sol/token/GxdTh6udNstGmLLk9ztBb6bkrms7oLbrJp5yzUaVpump"
+          target="_blank"
         >
-          <Link
-            href="https://gmgn.ai/sol/token/GxdTh6udNstGmLLk9ztBb6bkrms7oLbrJp5yzUaVpump"
-            target="_blank"
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="flex justify-center items-center gap-2.5 self-stretch border px-8 py-4 rounded-[44px] border-solid border-white hover:bg-white hover:text-black transition-colors duration-300"
           >
             Buy $scihub
-          </Link>
-          <Icons.newLogo className="w-6 h-6" />
-          <Icons.buy className="w-6 h-6" />
-        </motion.button>
+            <Icons.newLogo className="w-6 h-6" />
+            <Icons.buy className="w-6 h-6" />
+          </motion.button>
+        </Link>
       </motion.div>
     </motion.div>
   );
