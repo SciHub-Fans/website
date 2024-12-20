@@ -3,13 +3,23 @@
 import { motion } from "framer-motion";
 import { Icons } from "./icons";
 
-const ProgressBar = ({ isInView }: { isInView: boolean }) => {
+const ProgressBar = ({
+  current,
+  total,
+  isInView,
+}: {
+  current: number;
+  total: number;
+  isInView: boolean;
+}) => {
+  const percentage = Math.min(100, (current / total) * 100);
+
   return (
     <div className="relative w-full h-[14px] bg-white/20 rounded-full">
       <motion.div
         className="absolute top-0 left-0 bg-[#E32D2D] h-full rounded-full"
         initial={{ width: "0%" }}
-        animate={isInView ? { width: "55%" } : { width: "0%" }}
+        animate={isInView ? { width: `${percentage}%` } : { width: "0%" }}
         transition={{ duration: 1.2, ease: "easeOut" }}
       />
       <motion.div
@@ -23,7 +33,7 @@ const ProgressBar = ({ isInView }: { isInView: boolean }) => {
         animate={
           isInView
             ? {
-                left: "55%",
+                left: `${percentage}%`,
                 y: -40,
                 rotate: 0,
                 opacity: 1,
