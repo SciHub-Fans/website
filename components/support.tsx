@@ -135,19 +135,23 @@ const Support = () => {
               website, with exposure reaching 80 million users worldwide!
             </div>
             <div className="text-[#E32D2D] underline decoration-[#E32D2D]">
-                &quot;Sci-Hub is now available as meme coin!&quot;
+              &quot;Sci-Hub is now available as meme coin!&quot;
             </div>
           </div>
-          <motion.button
+          <Link
+            href="https://sci-hub.se"
+            target="_blank"
+            className="whitespace-nowrap"
+          >
+            <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="inline-flex max-w-[336px] justify-center items-center gap-2.5 border px-8 py-4 rounded-[44px] border-solid border-white hover:bg-white hover:text-black transition-colors duration-300"
             >
-              <Link href="https://sci-hub.se" target="_blank" className="whitespace-nowrap">
-                Sci-Hub official website
-              </Link>
+              Sci-Hub official website
               <Icons.buy className="w-6 h-6" />
             </motion.button>
+          </Link>
         </div>
         <LineSvg />
         <div className="flex flex-col gap-[24px] lg:gap-[44px] lg:flex-row">
@@ -169,16 +173,16 @@ const Support = () => {
                 website!
               </div>
             </div>
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex justify-center items-center gap-2.5 border px-8 py-4 rounded-[44px] border-solid border-white hover:bg-white hover:text-black transition-colors duration-300"
-            >
-              <Link href="https://sci-hub.se/donate" target="_blank">
+            <Link href="https://sci-hub.se/donate" target="_blank">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex justify-center items-center gap-2.5 border px-8 py-4 rounded-[44px] border-solid border-white hover:bg-white hover:text-black transition-colors duration-300"
+              >
                 Sci-Hub donate link
-              </Link>
-              <Icons.buy className="w-6 h-6" />
-            </motion.button>
+                <Icons.buy className="w-6 h-6" />
+              </motion.button>
+            </Link>
           </div>
           <div className="hidden md:flex flex-1 relative aspect-[4/3]">
             <Image
