@@ -8,25 +8,21 @@ import Introduce from "@/components/introduce";
 import Slogan from "@/components/slogan";
 import CopyFam from "@/components/copy-fam";
 import Disclaimer from "@/components/disclaimer";
-import { MatrixRain } from "@/components/animata/MatrixRain";
 import Support from "@/components/support";
 
 export default function Home() {
   return (
-    <div className="min-h-screen w-screen bg-black text-white">
-      <MatrixRain />
-      <div className="relative z-1">
-        <Header />
-        <Hero />
-        <Disclaimer />
-        <Introduce />
-        <Slogan />
-        <Support />
-        <DonationProgress />
-        <CopyFam />
-        <FAQ />
-        <Footer />
-      </div>
+    <div className="relative z-1">
+      <Header />
+      <Hero />
+      <Disclaimer />
+      <Introduce />
+      <Slogan />
+      <Support />
+      <DonationProgress />
+      <CopyFam />
+      <FAQ />
+      <Footer />
     </div>
   );
 }

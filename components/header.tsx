@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Icons } from "./icons";
+import { Icons, StoreIcons } from "./icons";
 
 const Header = () => {
   return (
@@ -11,6 +11,12 @@ const Header = () => {
         </span>
       </div>
       <div className="flex gap-4">
+        <Link
+          href="/store"
+          className="flex justify-center items-center [background:rgba(255,255,255,0.12)] hover:[background:rgba(255,255,255,0.2)] backdrop-blur-[20px] p-4 rounded-full transition-all duration-300 cursor-pointer"
+        >
+          <StoreIcons.store className="w-6 h-6" />
+        </Link>
         <Link
           href="https://forum.scihub.fans"
           target="_blank"
