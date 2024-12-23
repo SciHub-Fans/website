@@ -1,28 +1,13 @@
-"use client";
-
+import { getProducts } from "@/features/store/api/product";
 import { Header } from "@/features/store/components/header";
 import { ProductCard } from "@/features/store/components/product-card";
-import { useCartStore } from "@/features/store/hooks/use-cart-store";
-import { products } from "@/features/store/mock/products";
-import { useRouter } from "next/navigation";
 
-const StorePage = () => {
-  const { cartItems, addToCart, updateQuantity, removeFromCart, total } =
-    useCartStore();
-  const router = useRouter();
-
-  const handleCheckout = () => {
-    router.push("/store/checkout");
-  };
+const StorePage = async () => {
+  const products = await getProducts();
 
   return (
     <div className="flex-1 sci-container relative z-1">
-      <Header
-        cartItems={cartItems}
-        onUpdateQuantity={updateQuantity}
-        onRemoveItem={removeFromCart}
-        onCheckout={handleCheckout}
-      />
+      <Header />
 
       <main className="container mx-auto px-4 py-8">
         <div className="space-y-8">
@@ -40,7 +25,6 @@ const StorePage = () => {
               <ProductCard
                 key={product.id}
                 product={product}
-                onAddToCart={addToCart}
               />
             ))}
           </div>

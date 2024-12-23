@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./styles/globals.css";
 import { MatrixRain } from "@/components/animata/MatrixRain";
 import Providers from "./providers";
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "@/components/ui/sonner";
 
 const sfMono = localFont({
   src: [
@@ -74,7 +74,7 @@ export default function RootLayout({
             <MatrixRain />
             {children}
           </div>
-          <Toaster />
+          <Toaster richColors />
         </Providers>
       </body>
     </html>

@@ -27,21 +27,46 @@ interface CheckoutFormProps {
 export function CheckoutForm({ form }: CheckoutFormProps) {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>收货信息</CardTitle>
+      <CardHeader className='border-b-[0.5px] border-b-[#4A4A4A] border-solid'>
+        <CardTitle className='text-white text-xl font-bold leading-[normal]'>Shipping Information</CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className='pt-4'>
         <Form {...form}>
           <div className="space-y-4">
+            <FormField
+              control={form.control}
+              name="country"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Country</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select country" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {COUNTRIES.map(country => (
+                        <SelectItem key={country.code} value={country.code}>
+                          {country.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <div className="grid grid-cols-2 gap-4">
               <FormField
                 control={form.control}
                 name="firstName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>名字</FormLabel>
+                    <FormLabel>First name</FormLabel>
                     <FormControl>
-                      <Input placeholder="名字" {...field} />
+                      <Input placeholder="First name" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -52,9 +77,9 @@ export function CheckoutForm({ form }: CheckoutFormProps) {
                 name="lastName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>姓氏</FormLabel>
+                    <FormLabel>Last name</FormLabel>
                     <FormControl>
-                      <Input placeholder="姓氏" {...field} />
+                      <Input placeholder="Last name" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -67,9 +92,9 @@ export function CheckoutForm({ form }: CheckoutFormProps) {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>电子邮箱</FormLabel>
+                  <FormLabel>E-mail</FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="your@email.com" {...field} />
+                    <Input placeholder="your@email.com" type="email" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -81,9 +106,9 @@ export function CheckoutForm({ form }: CheckoutFormProps) {
               name="phone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>联系电话</FormLabel>
+                  <FormLabel>Contact number</FormLabel>
                   <FormControl>
-                    <Input placeholder="+86 13812345678" {...field} />
+                    <Input placeholder="+86" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -95,9 +120,9 @@ export function CheckoutForm({ form }: CheckoutFormProps) {
               name="address"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>地址</FormLabel>
+                  <FormLabel>Address 1</FormLabel>
                   <FormControl>
-                    <Input placeholder="详细地址" {...field} />
+                    <Input placeholder="Detailed Address" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -109,24 +134,24 @@ export function CheckoutForm({ form }: CheckoutFormProps) {
               name="address2"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>地址 2（可选）</FormLabel>
+                  <FormLabel>Address 2</FormLabel>
                   <FormControl>
-                    <Input placeholder="公寓号，单元号等" {...field} />
+                    <Input placeholder="Apartment, suite, etc. (optional)" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-3 gap-4">
               <FormField
                 control={form.control}
                 name="city"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>城市</FormLabel>
+                    <FormLabel>City</FormLabel>
                     <FormControl>
-                      <Input placeholder="城市" {...field} />
+                      <Input placeholder="City" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -137,37 +162,10 @@ export function CheckoutForm({ form }: CheckoutFormProps) {
                 name="state"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>省份</FormLabel>
+                    <FormLabel>Province / State</FormLabel>
                     <FormControl>
-                      <Input placeholder="省份" {...field} />
+                      <Input placeholder="Province / State" {...field} />
                     </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <FormField
-                control={form.control}
-                name="country"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>国家</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="选择国家" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        {COUNTRIES.map(country => (
-                          <SelectItem key={country.code} value={country.code}>
-                            {country.name}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -177,9 +175,9 @@ export function CheckoutForm({ form }: CheckoutFormProps) {
                 name="zip"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>邮政编码</FormLabel>
+                    <FormLabel>Postal Code</FormLabel>
                     <FormControl>
-                      <Input placeholder="邮政编码" {...field} />
+                      <Input placeholder="Postal Code" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

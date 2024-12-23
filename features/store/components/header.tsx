@@ -4,22 +4,19 @@ import Link from "next/link";
 import { Cart } from "./cart";
 import { Icons, StoreIcons } from "@/components/icons";
 import ConnectWallet from "@/features/solana/components/connect-wallet";
+import { useCartStore } from "../hooks/use-cart-store";
+import { useRouter } from "next/navigation";
 
-interface HeaderProps {
-  cartItems: any[];
-  onUpdateQuantity: (id: string, quantity: number) => void;
-  onRemoveItem: (id: string) => void;
-  onCheckout: () => void;
-}
+export function Header() {
+  const { cartItems, updateQuantity, removeFromCart } = useCartStore();
+  const router = useRouter();
 
-export function Header({
-  cartItems,
-  onUpdateQuantity,
-  onRemoveItem,
-  onCheckout,
-}: HeaderProps) {
+  const handleCheckout = () => {
+    router.push("/store/checkout");
+  };
+
   return (
-    <header className="sci-container h-[104px] w-full flex justify-between items-center">
+    <header className="h-[104px] w-full flex justify-between items-center">
       <div className="flex h-14 justify-center items-center gap-2 [background:rgba(255,255,255,0.12)] backdrop-blur-[20px] p-4 rounded-[215.5px]">
         <Icons.newLogo className="w-7 h-7" />
         <span className="hidden md:inline-block text-white text-center text-base font-normal leading-[160%] lowercase">
@@ -29,9 +26,9 @@ export function Header({
       <div className="flex gap-4">
         <Cart
           items={cartItems}
-          onUpdateQuantity={onUpdateQuantity}
-          onRemoveItem={onRemoveItem}
-          onCheckout={onCheckout}
+          onUpdateQuantity={updateQuantity}
+          onRemoveItem={removeFromCart}
+          onCheckout={handleCheckout}
         />
         <Link
           href="/store/orders"

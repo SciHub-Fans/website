@@ -11,13 +11,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
 import Image from "next/image";
-import { useToast } from "@/hooks/use-toast";
 import { StoreIcons } from "@/components/icons";
+import { toast } from "sonner";
 
 interface CartProps {
   items: CartItem[];
-  onUpdateQuantity: (id: string, quantity: number) => void;
-  onRemoveItem: (id: string) => void;
+  onUpdateQuantity: (id: string, variantId: string, quantity: number) => void;
+  onRemoveItem: (id: string, variantId: string) => void;
   onCheckout: () => void;
 }
 
@@ -28,17 +28,13 @@ export function Cart({
   onCheckout,
 }: CartProps) {
   const total = items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+    (sum, item) => sum + (item.selectedVariant.price || item.price) * item.quantity,
     0
   );
-  const { toast } = useToast();
 
-  const handleRemove = (id: string, name: string) => {
-    onRemoveItem(id);
-    toast({
-      title: "已移除商品",
-      description: `${name} 已从购物车中移除`,
-    });
+  const handleRemove = (id: string, variantId: string, name: string) => {
+    onRemoveItem(id, variantId);
+    toast.success(`${name} 已从购物车中移除`);
   };
 
   return (
@@ -59,7 +55,7 @@ export function Cart({
         </SheetHeader>
         <div className="mt-8 space-y-4">
           {items.map((item) => (
-            <div key={item.id} className="flex items-center gap-4">
+            <div key={`${item.id}-${item.selectedVariant.id}`} className="flex items-center gap-4">
               <div className="relative h-16 w-16 overflow-hidden rounded">
                 <Image
                   src={item.image}
@@ -70,13 +66,18 @@ export function Cart({
               </div>
               <div className="flex-1">
                 <h4 className="font-semibold">{item.name}</h4>
-                <p className="text-sm text-muted-foreground">¥{item.price}</p>
+                <p className="text-sm text-muted-foreground">
+                  尺码: {item.selectedVariant.variantValues[0].value}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  ¥{item.selectedVariant.price || item.price}
+                </p>
               </div>
               <div className="flex items-center gap-2">
                 <Button
                   variant="outline"
                   size="icon"
-                  onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
+                  onClick={() => onUpdateQuantity(item.id, item.selectedVariant.id, item.quantity - 1)}
                   disabled={item.quantity <= 1}
                 >
                   -
@@ -85,7 +86,8 @@ export function Cart({
                 <Button
                   variant="outline"
                   size="icon"
-                  onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
+                  onClick={() => onUpdateQuantity(item.id, item.selectedVariant.id, item.quantity + 1)}
+                  disabled={item.quantity >= item.selectedVariant.quantity}
                 >
                   +
                 </Button>
@@ -93,7 +95,7 @@ export function Cart({
                   variant="ghost"
                   size="icon"
                   className="text-destructive hover:text-destructive/90"
-                  onClick={() => handleRemove(item.id, item.name)}
+                  onClick={() => handleRemove(item.id, item.selectedVariant.id, item.name)}
                 >
                   <Trash2 className="h-4 w-4" />
                 </Button>
@@ -107,7 +109,7 @@ export function Cart({
               <span>总计</span>
               <span>¥{total}</span>
             </div>
-            <Button className="mt-4 w-full" onClick={onCheckout}>
+            <Button className="mt-4 w-full rounded-[44px]" onClick={onCheckout}>
               结算
             </Button>
           </div>

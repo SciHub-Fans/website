@@ -18,11 +18,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useWallet } from '@solana/wallet-adapter-react';
+import { useEffect } from 'react';
 
 const TOKENS = [
+  { symbol: 'SCIHUB', name: 'SciHub' },
   { symbol: 'SOL', name: 'Solana' },
   { symbol: 'USDC', name: 'USD Coin' },
-  { symbol: 'BONK', name: 'Bonk' }
 ];
 
 interface PaymentMethodsProps {
@@ -30,12 +32,20 @@ interface PaymentMethodsProps {
 }
 
 export function PaymentMethods({ form }: PaymentMethodsProps) {
+  const {publicKey} = useWallet();
+
+  useEffect(() => {
+    if (publicKey) {
+      form.setValue('solanaAddress', publicKey.toString());
+    }
+  }, [publicKey, form]);
+
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>支付方式</CardTitle>
+      <CardHeader className='border-b-[0.5px] border-b-[#4A4A4A] border-solid'>
+        <CardTitle className='text-white text-xl font-bold leading-[normal]'>Payment Methods</CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className='pt-4'>
         <Form {...form}>
           <div className="space-y-4">
             <FormField
@@ -43,9 +53,9 @@ export function PaymentMethods({ form }: PaymentMethodsProps) {
               name="solanaAddress"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Solana 钱包地址</FormLabel>
+                  <FormLabel>Solana Wallet Address</FormLabel>
                   <FormControl>
-                    <Input placeholder="输入你的 Solana 钱包地址" {...field} />
+                    <Input placeholder="Connect your Solana Wallet" readOnly {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -54,14 +64,14 @@ export function PaymentMethods({ form }: PaymentMethodsProps) {
 
             <FormField
               control={form.control}
-              name="currency"
+              name="paymentToken"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>支付代币</FormLabel>
+                  <FormLabel>Payment tokens</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="选择支付代币" />
+                        <SelectValue placeholder="Select payment token" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
