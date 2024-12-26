@@ -3,6 +3,7 @@ import { Product } from "../types";
 
 export const getProducts = async () => {
     const response = await request.get<Product[]>('/product/all');
+    console.log(response);
     return response.data;
 };
 

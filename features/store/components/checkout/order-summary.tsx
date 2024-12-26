@@ -39,6 +39,9 @@ export function OrderSummary({
   );
   const totalUSD = subtotal;
 
+  console.log(!!currency && totalUSD > 0, currency, totalUSD);
+  
+
   const { data, isLoading } = useQuery({
     queryKey: ["tokenPrice", currency, totalUSD],
     queryFn: () => convertUsdToToken(currency, totalUSD),

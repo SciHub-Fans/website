@@ -42,13 +42,12 @@ type CheckoutFormData = z.infer<typeof checkoutSchema>;
 
 export default function CheckoutPage() {
   const { cartItems, total, clearCart } = useCartStore();
-  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { connection } = useConnection();
   const { publicKey, sendTransaction, connected } = useWallet();
 
   const { payment } = usePayment();
-  const { mutate: createOrderMutate } = useMutation({
+  const { mutate: createOrderMutate, isPending } = useMutation({
     mutationFn: async (data: TCreateOrderBody) => {
       const orderResponse = await createOrder(data);
       console.log(orderResponse);
@@ -77,7 +76,7 @@ export default function CheckoutPage() {
       }
 
       return orderResponse;
-    },
+    }
   });
 
 
@@ -108,7 +107,7 @@ export default function CheckoutPage() {
       orderProducts: cartItems.map((item) => ({
         variantId: item.selectedVariant.id,
         productId: item.selectedVariant.productId,
-        quantity: item.selectedVariant.quantity,
+        quantity: item.buyQuantity,
       })),
     };
 
@@ -209,7 +208,7 @@ export default function CheckoutPage() {
               currency={currency as Currency}
               items={cartItems}
               total={total}
-              loading={loading}
+              loading={isPending}
               onSubmit={form.handleSubmit(onSubmit)}
             />
           </div>

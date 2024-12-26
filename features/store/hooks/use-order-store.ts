@@ -13,7 +13,7 @@ export function useOrderStore() {
 
   const getOrdersByWallet = (walletAddress: string) => {
     return orders.filter(order => 
-      order.walletAddress.toLowerCase() === walletAddress.toLowerCase()
+      order.solanaAddress.toLowerCase() === walletAddress.toLowerCase()
     );
   };
 

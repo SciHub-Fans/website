@@ -41,7 +41,8 @@ const usePayment = () => {
 
     const createSolTransferInstruction = async (toPublicKey: PublicKey, amount: string) => {
         const balance = await connection.getBalance(publicKey!);
-        if (balance < Number(amount) * LAMPORTS_PER_SOL) {
+        console.log("balance", balance);
+        if (balance < Number(amount)) {
             toast.error("Insufficient balance");
             return;
         }
@@ -49,13 +50,14 @@ const usePayment = () => {
         return SystemProgram.transfer({
             fromPubkey: publicKey!,
             toPubkey: toPublicKey,
-            lamports: Number(amount) * LAMPORTS_PER_SOL
+            lamports: Number(amount)
         });
     }
 
     const payment = async (currency: Currency, toPublicKey: PublicKey, amount: string, memo: string) => {
         const instructions: TransactionInstruction[] = [];
         if (currency === Currency.SOL) {
+            console.log("createSolTransferInstruction", toPublicKey, amount);
             const solTransferInstruction = await createSolTransferInstruction(toPublicKey, amount);
             if (solTransferInstruction) {
                 instructions.push(solTransferInstruction);
