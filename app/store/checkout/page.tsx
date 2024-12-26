@@ -11,20 +11,19 @@ import { PaymentMethods } from "@/features/store/components/checkout/payment-met
 import { OrderSummary } from "@/features/store/components/checkout/order-summary";
 import { toast } from "sonner";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
-import {
-  LAMPORTS_PER_SOL,
-  PublicKey,
-  SystemProgram,
-  Transaction,
-} from "@solana/web3.js";
 import { Header } from "@/features/store/components/header";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeftIcon } from "lucide-react";
+import { useMutation } from "@tanstack/react-query";
+import { createOrder, TCreateOrderBody } from "@/features/store/api/order";
+import usePayment from "@/features/solana/hooks/use-payment";
+import { Currency } from "@/features/store/types";
+import { PublicKey } from "@solana/web3.js";
 
 const checkoutSchema = z.object({
   solanaAddress: z.string().min(1, "Please enter Solana wallet address"),
-  paymentToken: z.string().min(1, "Please select payment token"),
+  currency: z.string().min(1, "Please select payment token"),
   email: z.string().email("Please enter a valid email address"),
   country: z.string().min(1, "Please select a country"),
   firstName: z.string().min(1, "Please enter first name"),
@@ -37,7 +36,6 @@ const checkoutSchema = z.object({
   city: z.string().min(1, "Please enter city"),
   state: z.string().min(1, "Please enter state/province"),
   zip: z.string().min(1, "Please enter postal code"),
-  currency: z.string().min(1, "Please select payment token"),
 });
 
 type CheckoutFormData = z.infer<typeof checkoutSchema>;
@@ -49,12 +47,48 @@ export default function CheckoutPage() {
   const { connection } = useConnection();
   const { publicKey, sendTransaction, connected } = useWallet();
 
+  const { payment } = usePayment();
+  const { mutate: createOrderMutate } = useMutation({
+    mutationFn: async (data: TCreateOrderBody) => {
+      const orderResponse = await createOrder(data);
+      console.log(orderResponse);
+
+      if (!orderResponse.receiverSolanaAddress) {
+        toast.error("Order creation failed");
+        return;
+      }
+      
+      const result = await payment(orderResponse.currency, new PublicKey(orderResponse.receiverSolanaAddress), orderResponse.amount, orderResponse.id);
+      if (result) {
+        const confirmationStatus = await connection.confirmTransaction({
+          signature: result.signature,
+          ...result.latestBlockhash,
+        });
+
+        if (confirmationStatus.value.err) {
+          toast.error("Transaction confirmation failed");
+          return;
+        }
+
+        clearCart();
+        toast.success("Order submitted", {
+          description: "Thank you for your purchase!",
+        });
+      }
+
+      return orderResponse;
+    },
+  });
+
+
   const form = useForm<CheckoutFormData>({
     resolver: zodResolver(checkoutSchema),
     defaultValues: {
       currency: "SCIHUB",
     },
   });
+
+  const currency = form.watch("currency");
 
   const onSubmit = async (data: CheckoutFormData) => {
     console.log(cartItems);
@@ -68,59 +102,71 @@ export default function CheckoutPage() {
       return;
     }
 
-    setLoading(true);
-    try {
-      // 获取最新的 blockhash
-      const latestBlockhash = await connection.getLatestBlockhash("finalized");
+    const createOrderData = {
+      ...data,
+      currency: data.currency as Currency, 
+      orderProducts: cartItems.map((item) => ({
+        variantId: item.selectedVariant.id,
+        productId: item.selectedVariant.productId,
+        quantity: item.selectedVariant.quantity,
+      })),
+    };
 
-      const transaction = new Transaction({
-        feePayer: publicKey,
-        ...latestBlockhash,
-      });
+    createOrderMutate(createOrderData);
 
-      const transferInstruction = SystemProgram.transfer({
-        fromPubkey: publicKey,
-        toPubkey: new PublicKey(data.solanaAddress),
-        lamports: LAMPORTS_PER_SOL * 0.0001,
-      });
+    // setLoading(true);
+    // try {
+    //   // 获取最新的 blockhash
+    //   const latestBlockhash = await connection.getLatestBlockhash("finalized");
 
-      transaction.add(transferInstruction);
+    //   const transaction = new Transaction({
+    //     feePayer: publicKey,
+    //     ...latestBlockhash,
+    //   });
 
-      const signature = await sendTransaction(transaction, connection, {
-        maxRetries: 5,
-      });
+    //   const transferInstruction = SystemProgram.transfer({
+    //     fromPubkey: publicKey,
+    //     toPubkey: new PublicKey(data.solanaAddress),
+    //     lamports: LAMPORTS_PER_SOL * 0.0001,
+    //   });
 
-      toast.info("Transaction submitted", {
-        description: "Waiting for confirmation...",
-      });
+    //   transaction.add(transferInstruction);
 
-      const confirmationStatus = await connection.confirmTransaction(
-        {
-          signature,
-          ...latestBlockhash,
-        },
-        "confirmed"
-      );
+    //   const signature = await sendTransaction(transaction, connection, {
+    //     maxRetries: 5,
+    //   });
 
-      if (confirmationStatus.value.err) {
-        throw new Error("Transaction confirmation failed");
-      }
+    //   toast.info("Transaction submitted", {
+    //     description: "Waiting for confirmation...",
+    //   });
 
-      clearCart();
+    //   const confirmationStatus = await connection.confirmTransaction(
+    //     {
+    //       signature,
+    //       ...latestBlockhash,
+    //     },
+    //     "confirmed"
+    //   );
 
-      toast.success("Order submitted", {
-        description: "Thank you for your purchase!",
-      });
+    //   if (confirmationStatus.value.err) {
+    //     throw new Error("Transaction confirmation failed");
+    //   }
 
-      // router.push("/orders");
-    } catch (error: any) {
-      console.error("Transaction error:", error);
-      toast.error("Payment failed", {
-        description: error.message || "Please try again later",
-      });
-    } finally {
-      setLoading(false);
-    }
+    //   clearCart();
+
+    //   toast.success("Order submitted", {
+    //     description: "Thank you for your purchase!",
+    //   });
+
+    //   // router.push("/orders");
+    // } catch (error: any) {
+    //   console.error("Transaction error:", error);
+    //   toast.error("Payment failed", {
+    //     description: error.message || "Please try again later",
+    //   });
+    // } finally {
+    //   setLoading(false);
+    // }
   };
 
   if (cartItems.length === 0) {
@@ -160,6 +206,7 @@ export default function CheckoutPage() {
           </div>
           <div className="lg:pl-8">
             <OrderSummary
+              currency={currency as Currency}
               items={cartItems}
               total={total}
               loading={loading}

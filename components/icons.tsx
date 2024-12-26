@@ -1,4 +1,5 @@
 import { TIconProps } from "@/types/icon";
+import { Loader } from "lucide-react";
 
 export const Icons = {
   newLogo: (props: TIconProps) => (
@@ -380,6 +381,7 @@ export const Icons = {
       </defs>
     </svg>
   ),
+  loading: (props: TIconProps) => <Loader {...props} />,
 };
 
 export const StoreIcons = {

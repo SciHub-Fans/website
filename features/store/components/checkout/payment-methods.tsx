@@ -64,7 +64,7 @@ export function PaymentMethods({ form }: PaymentMethodsProps) {
 
             <FormField
               control={form.control}
-              name="paymentToken"
+              name="currency"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Payment tokens</FormLabel>

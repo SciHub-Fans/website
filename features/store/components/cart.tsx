@@ -28,7 +28,7 @@ export function Cart({
   onCheckout,
 }: CartProps) {
   const total = items.reduce(
-    (sum, item) => sum + (item.selectedVariant.price || item.price) * item.quantity,
+    (sum, item) => sum + (item.selectedVariant.price || item.product.price) * item.buyQuantity,
     0
   );
 
@@ -44,7 +44,7 @@ export function Cart({
           <StoreIcons.shopcart className="w-6 h-6" />
           {items.length > 0 && (
             <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center">
-              {items.reduce((sum, item) => sum + item.quantity, 0)}
+              {items.reduce((sum, item) => sum + item.buyQuantity, 0)}
             </span>
           )}
         </button>
@@ -55,39 +55,39 @@ export function Cart({
         </SheetHeader>
         <div className="mt-8 space-y-4">
           {items.map((item) => (
-            <div key={`${item.id}-${item.selectedVariant.id}`} className="flex items-center gap-4">
+            <div key={`${item.product.id}-${item.selectedVariant.id}`} className="flex items-center gap-4">
               <div className="relative h-16 w-16 overflow-hidden rounded">
                 <Image
-                  src={item.image}
-                  alt={item.name}
+                  src={item.product.image}
+                  alt={item.product.name}
                   fill
                   className="object-cover"
                 />
               </div>
               <div className="flex-1">
-                <h4 className="font-semibold">{item.name}</h4>
+                <h4 className="font-semibold">{item.product.name}</h4>
                 <p className="text-sm text-muted-foreground">
                   尺码: {item.selectedVariant.variantValues[0].value}
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  ¥{item.selectedVariant.price || item.price}
+                  ¥{item.selectedVariant.price || item.product.price}
                 </p>
               </div>
               <div className="flex items-center gap-2">
                 <Button
                   variant="outline"
                   size="icon"
-                  onClick={() => onUpdateQuantity(item.id, item.selectedVariant.id, item.quantity - 1)}
-                  disabled={item.quantity <= 1}
+                  onClick={() => onUpdateQuantity(item.product.id, item.selectedVariant.id, item.buyQuantity - 1)}
+                  disabled={item.buyQuantity <= 1}
                 >
                   -
                 </Button>
-                <span>{item.quantity}</span>
+                <span>{item.buyQuantity}</span>
                 <Button
                   variant="outline"
                   size="icon"
-                  onClick={() => onUpdateQuantity(item.id, item.selectedVariant.id, item.quantity + 1)}
-                  disabled={item.quantity >= item.selectedVariant.quantity}
+                  onClick={() => onUpdateQuantity(item.product.id, item.selectedVariant.id, item.buyQuantity + 1)}
+                  disabled={item.buyQuantity >= item.selectedVariant.quantity}
                 >
                   +
                 </Button>
@@ -95,7 +95,7 @@ export function Cart({
                   variant="ghost"
                   size="icon"
                   className="text-destructive hover:text-destructive/90"
-                  onClick={() => handleRemove(item.id, item.selectedVariant.id, item.name)}
+                  onClick={() => handleRemove(item.product.id, item.selectedVariant.id, item.product.name)}
                 >
                   <Trash2 className="h-4 w-4" />
                 </Button>

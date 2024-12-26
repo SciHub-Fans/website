@@ -1,7 +1,6 @@
 
 import request from "@/lib/request";
-import { TResponse } from "@/types/request";
-import { Currency, Order } from "../types";
+import { CreateOrderResponse, Currency, Order } from "../types";
 
 export type TCreateOrderBody = {
     solanaAddress: string;
@@ -16,14 +15,15 @@ export type TCreateOrderBody = {
     state: string;
     zip: string;
     currency: Currency;
-    products: {
+    orderProducts: {
         productId: string;
         quantity: number;
+        variantId: string;
     }[];
 };
 
 export const createOrder = async (body: TCreateOrderBody) => {
-    const response = await request.post<TResponse<Order>>('/orders', body);
+    const response = await request.post<Omit<Order, 'orderProducts'>>('/order', body);
     return response.data;
 };
 
@@ -38,7 +38,7 @@ export const getOrder = async (id: string) => {
 };
 
 export const cancelOrder = async (id: string) => {
-    const response = await request.post<TResponse<Order>>(`/order/${id}/cancel`);
+    const response = await request.post<Order>(`/order/${id}/cancel`);
     return response.data;
 };
 

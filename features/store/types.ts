@@ -53,20 +53,10 @@ export interface Product {
     updatedAt: Date;
 }
 
-export interface CartItem extends Product {
-    quantity: number;
+export interface CartItem {
+    product: Product;
     selectedVariant: ProductVariant;
-}
-
-export interface ShippingAddress {
-    fullName: string;
-    streetAddress: string;
-    city: string;
-    state: string;
-    country: string;
-    postalCode: string;
-    email: string;
-    phone: string;
+    buyQuantity: number;
 }
 
 export interface OrderProduct {
@@ -84,11 +74,37 @@ export interface OrderProduct {
 
 export interface Order {
     id: string;
-    items: OrderProduct[];
-    total: number;
-    status: 'pending' | 'paid' | 'shipped' | 'delivered';
+    solanaAddress: string;
+    receiverSolanaAddress: string;
+    email: string;
+    country: string;
+    firstName: string;
+    lastName: string;
+    phone?: string;
+    address: string;
+    address2?: string;
+    city: string;
+    state: string;
+    zip: string;
+    status: OrderStatus;
+    amount: string;
+    uiAmount: number;
+    currency: Currency;
+    orderProducts: OrderProduct[];
+    canceledAt?: Date;
+    completedAt?: Date;
+    expiredAt?: Date;
+    createdAt: Date;
+    updatedAt: Date;
+}
+
+export interface CreateOrderResponse {
+    amount: string;
     createdAt: string;
-    address: ShippingAddress;
-    walletAddress: string;
-    transactionHash?: string;
+    expiresAt: string;
+    orderId: string;
+    status: string;
+    uiAmount: number;
+    updatedAt: string;
+    receiverSolanaAddress: string;
 }
