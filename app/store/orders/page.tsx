@@ -23,7 +23,7 @@ const StorePage = () => {
     });
     return (
         <div className="flex-1 sci-container relative z-1">
-            <Header />
+            <Header back />
             {publicKey && <div className="flex-1 sci-container relative z-1">
                 <h1>My Orders</h1>
                 <Table>

@@ -189,7 +189,7 @@ export default function CheckoutPage() {
 
   return (
     <div className="min-h-screen sci-container relative z-1">
-      <Header />
+      <Header back />
 
       <div className="mx-auto px-4 py-8">
         <Link href="/store" className="block mb-4 flex items-center gap-2">
