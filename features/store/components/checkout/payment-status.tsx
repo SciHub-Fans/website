@@ -17,10 +17,10 @@ export function PaymentStatus({ status, error, txHash }: PaymentStatusProps) {
       <Alert>
         <Loader2 className="h-4 w-4 animate-spin" />
         <AlertTitle>
-          {status === 'connecting' ? '正在连接钱包...' : '正在处理支付...'}
+          {status === 'connecting' ? 'Connecting wallet...' : 'Processing payment...'}
         </AlertTitle>
         <AlertDescription>
-          请在 MetaMask 中确认交易
+          Please confirm the transaction in MetaMask
         </AlertDescription>
       </Alert>
     );
@@ -29,7 +29,7 @@ export function PaymentStatus({ status, error, txHash }: PaymentStatusProps) {
   if (status === 'error') {
     return (
       <Alert variant="destructive">
-        <AlertTitle>支付失败</AlertTitle>
+        <AlertTitle>Payment failed</AlertTitle>
         <AlertDescription>{error}</AlertDescription>
       </Alert>
     );
@@ -38,9 +38,9 @@ export function PaymentStatus({ status, error, txHash }: PaymentStatusProps) {
   if (status === 'success') {
     return (
       <Alert>
-        <AlertTitle>支付成功</AlertTitle>
+        <AlertTitle>Payment successful</AlertTitle>
         <AlertDescription>
-          交易哈希: {txHash?.slice(0, 10)}...{txHash?.slice(-8)}
+          Transaction hash: {txHash?.slice(0, 10)}...{txHash?.slice(-8)}
         </AlertDescription>
       </Alert>
     );

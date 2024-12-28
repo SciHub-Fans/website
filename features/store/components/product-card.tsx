@@ -22,18 +22,18 @@ export function ProductCard({ product }: ProductCardProps) {
 
   const handleAddToCart = () => {
     if (!selectedVariantId) {
-      toast.error("请选择尺码");
+      toast.error("Please select a size");
       return;
     }
 
     const variant = product.variants.find(v => v.id === selectedVariantId);
     if (!variant) {
-      toast.error("商品变体不存在");
+      toast.error("Product variant not found");
       return;
     }
 
     addToCart(product, variant);
-    toast.success(`${product.name} 已成功添加到购物车`);
+    toast.success(`${product.name} added to cart`);
   };
 
   console.log(product);

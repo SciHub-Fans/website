@@ -19,7 +19,7 @@ export function ConnectStatus({ address, balance, onConnect }: ConnectStatusProp
         className="gap-2"
       >
         <Wallet className="h-4 w-4" />
-        连接钱包
+        Connect Wallet
       </Button>
     );
   }

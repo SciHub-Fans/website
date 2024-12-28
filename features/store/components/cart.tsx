@@ -27,6 +27,7 @@ export function Cart({
   onRemoveItem,
   onCheckout,
 }: CartProps) {
+  console.log(items);
   const total = items.reduce(
     (sum, item) => sum + (item.selectedVariant.price || item.product.price) * item.buyQuantity,
     0
@@ -34,7 +35,7 @@ export function Cart({
 
   const handleRemove = (id: string, variantId: string, name: string) => {
     onRemoveItem(id, variantId);
-    toast.success(`${name} 已从购物车中移除`);
+    toast.success(`${name} removed from cart`);
   };
 
   return (
@@ -51,7 +52,7 @@ export function Cart({
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>购物车</SheetTitle>
+          <SheetTitle>Cart</SheetTitle>
         </SheetHeader>
         <div className="mt-8 space-y-4">
           {items.map((item) => (
@@ -67,7 +68,7 @@ export function Cart({
               <div className="flex-1">
                 <h4 className="font-semibold">{item.product.name}</h4>
                 <p className="text-sm text-muted-foreground">
-                  尺码: {item.selectedVariant.variantValues[0].value}
+                  {item.product.variantOptions[0].name}: {item.selectedVariant.variantValues[0].value}
                 </p>
                 <p className="text-sm text-muted-foreground">
                   ¥{item.selectedVariant.price || item.product.price}
@@ -106,16 +107,16 @@ export function Cart({
         {items.length > 0 ? (
           <div className="mt-8">
             <div className="flex justify-between text-lg font-semibold">
-              <span>总计</span>
+              <span>Total</span>
               <span>¥{total}</span>
             </div>
             <Button className="mt-4 w-full rounded-[44px]" onClick={onCheckout}>
-              结算
+              Checkout
             </Button>
           </div>
         ) : (
           <div className="mt-8 text-center">
-            <p className="text-muted-foreground">购物车是空的</p>
+            <p className="text-muted-foreground">Cart is empty</p>
           </div>
         )}
       </SheetContent>

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Scihub Store",
-  description: "Scihub周边商城",
+  description: "Scihub Peripheral Mall",
 };
 
 const StoreLayout = ({ children }: { children: React.ReactNode }) => {

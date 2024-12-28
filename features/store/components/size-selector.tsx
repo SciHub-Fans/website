@@ -36,7 +36,7 @@ const SizeSelector = ({ sizes, onSelect }: SizeSelectorProps) => {
               className="min-w-8 min-h-8 max-w-10 max-h-10"
               onClick={() => handleSizeSelect(size)}
               disabled={size.quantity <= 0}
-              title={size.quantity <= 0 ? "缺货" : `库存: ${size.quantity}`}
+              title={size.quantity <= 0 ? "Out of stock" : `Stock: ${size.quantity}`}
             >
               {size.label}
             </Button>

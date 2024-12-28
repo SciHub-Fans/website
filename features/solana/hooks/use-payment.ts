@@ -24,7 +24,7 @@ const usePayment = () => {
 
         // 查询付款人代币账户余额
         const payerBalance = await connection.getTokenAccountBalance(payerAtaAddress);
-        console.log("付款人代币余额:", payerBalance.value.uiAmount);
+        console.log("payerBalance", payerBalance.value.uiAmount);
 
         if (Number(payerBalance.value.amount) < Number(amount)) {
             toast.error("Insufficient balance");
