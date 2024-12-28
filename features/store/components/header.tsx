@@ -43,7 +43,6 @@ export function Header(props: {back?: boolean} = {back: false}) {
         />
         <Link
           href="/store/orders"
-          target="_blank"
           className="flex justify-center items-center [background:rgba(255,255,255,0.12)] hover:[background:rgba(255,255,255,0.2)] backdrop-blur-[20px] p-4 rounded-full transition-all duration-300 cursor-pointer"
         >
           <StoreIcons.order className="w-6 h-6" />
