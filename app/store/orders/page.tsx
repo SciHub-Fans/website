@@ -53,7 +53,7 @@ const StorePage = () => {
                                     </div>)
                                 })}</TableCell>
                                 <TableCell>{order.uiAmount} {order.currency}</TableCell>
-                                <TableCell>{order.status}</TableCell>
+                                <TableCell><div className={`${order.status === "PENDING" ? "text-yellow-500" : order.status === "COMPLETED" ? "text-green-500" : "text-red-500"}`}>{order.status}</div></TableCell>
                                 <TableCell>
                                     <div>
                                         <div>Name: {order.firstName} {order.lastName}</div>
