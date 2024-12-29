@@ -118,7 +118,7 @@ export default function CheckoutPage() {
             Please add items to your cart first
           </p>
           <button
-            onClick={() => router.push("/")}
+            onClick={() => router.push("/store")}
             className="text-primary hover:underline"
           >
             Return to store
@@ -133,12 +133,6 @@ export default function CheckoutPage() {
       <Header back />
 
       <div className="mx-auto px-4 py-8">
-        <Link href="/store" className="block mb-4 flex items-center gap-2">
-          <Button size="icon" className="w-8 h-8">
-            <ArrowLeftIcon className="w-4 h-4" />
-          </Button>
-          <span className="text-sm">Back to store</span>
-        </Link>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-6">
             <PaymentMethods form={form} />

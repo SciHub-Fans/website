@@ -28,7 +28,7 @@ export function CheckoutForm({ form }: CheckoutFormProps) {
   return (
     <Card>
       <CardHeader className='border-b-[0.5px] border-b-[#4A4A4A] border-solid'>
-        <CardTitle className='text-white text-xl font-bold leading-[normal]'>Shipping Information</CardTitle>
+        <CardTitle className='text-white text-xl font-bold leading-[normal]'>Shipping Information (Support Chinese input)</CardTitle>
       </CardHeader>
       <CardContent className='pt-4'>
         <Form {...form}>
