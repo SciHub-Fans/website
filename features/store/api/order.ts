@@ -1,6 +1,6 @@
 
 import request from "@/lib/request";
-import { CreateOrderResponse, Currency, Order } from "../types";
+import { Currency, Order } from "../types";
 
 export type TCreateOrderBody = {
     solanaAddress: string;
@@ -27,22 +27,12 @@ export const createOrder = async (body: TCreateOrderBody) => {
     return response.data;
 };
 
-export const getOrders = async () => {
-    const response = await request.get<Order[]>('/orders');
-    return response.data;
-};
-
-export const getOrder = async (id: string) => {
-    const response = await request.get<Order>(`/order/${id}`);
-    return response.data;
-};
-
 export const cancelOrder = async (id: string) => {
     const response = await request.post<Order>(`/order/${id}/cancel`);
     return response.data;
 };
 
-export const getOrdersByWalletAddress = async (walletAddress: string) => {
-    const response = await request.get<Order[]>(`/order/all/${walletAddress}`);
+export const getOrdersByWalletAddress = async () => {
+    const response = await request.get<Order[]>(`/order/all`);
     return response.data;
 };

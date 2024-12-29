@@ -3,7 +3,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/features/store/hooks/use-cart-store";
 import { CheckoutForm } from "@/features/store/components/checkout/checkout-form";
@@ -44,7 +43,7 @@ export default function CheckoutPage() {
   const { cartItems, total, clearCart } = useCartStore();
   const router = useRouter();
   const { connection } = useConnection();
-  const { publicKey, sendTransaction, connected } = useWallet();
+  const { publicKey, connected } = useWallet();
 
   const { payment } = usePayment();
   const { mutate: createOrderMutate, isPending } = useMutation({
@@ -90,10 +89,6 @@ export default function CheckoutPage() {
   const currency = form.watch("currency");
 
   const onSubmit = async (data: CheckoutFormData) => {
-    console.log(cartItems);
-    console.log(total);
-    console.log(data);
-
     if (!publicKey || !connected) {
       toast.error("Wallet not connected", {
         description: "Please connect your Solana wallet first",
@@ -112,60 +107,6 @@ export default function CheckoutPage() {
     };
 
     createOrderMutate(createOrderData);
-
-    // setLoading(true);
-    // try {
-    //   // 获取最新的 blockhash
-    //   const latestBlockhash = await connection.getLatestBlockhash("finalized");
-
-    //   const transaction = new Transaction({
-    //     feePayer: publicKey,
-    //     ...latestBlockhash,
-    //   });
-
-    //   const transferInstruction = SystemProgram.transfer({
-    //     fromPubkey: publicKey,
-    //     toPubkey: new PublicKey(data.solanaAddress),
-    //     lamports: LAMPORTS_PER_SOL * 0.0001,
-    //   });
-
-    //   transaction.add(transferInstruction);
-
-    //   const signature = await sendTransaction(transaction, connection, {
-    //     maxRetries: 5,
-    //   });
-
-    //   toast.info("Transaction submitted", {
-    //     description: "Waiting for confirmation...",
-    //   });
-
-    //   const confirmationStatus = await connection.confirmTransaction(
-    //     {
-    //       signature,
-    //       ...latestBlockhash,
-    //     },
-    //     "confirmed"
-    //   );
-
-    //   if (confirmationStatus.value.err) {
-    //     throw new Error("Transaction confirmation failed");
-    //   }
-
-    //   clearCart();
-
-    //   toast.success("Order submitted", {
-    //     description: "Thank you for your purchase!",
-    //   });
-
-    //   // router.push("/orders");
-    // } catch (error: any) {
-    //   console.error("Transaction error:", error);
-    //   toast.error("Payment failed", {
-    //     description: error.message || "Please try again later",
-    //   });
-    // } finally {
-    //   setLoading(false);
-    // }
   };
 
   if (cartItems.length === 0) {

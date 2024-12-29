@@ -13,13 +13,17 @@ import {
   } from "@/components/ui/table";
 import { useQuery } from "@tanstack/react-query";
 import { getOrdersByWalletAddress } from "@/features/store/api/order";
+import { isLoginAtom } from "@/features/auth/atom/auth";
+import { useAtomValue } from "jotai";
 
 const StorePage = () => {
-    const { publicKey, sendTransaction, connected } = useWallet();
-    const { data: orders, isLoading } = useQuery({
+    const { publicKey, connected } = useWallet();
+    const isLogin = useAtomValue(isLoginAtom);
+    const { data: orders } = useQuery({
         queryKey: ["orders"],
-        queryFn: () => getOrdersByWalletAddress(publicKey?.toBase58() || ""),
-        enabled: connected && publicKey !== null,
+        queryFn: () => getOrdersByWalletAddress(),
+        enabled: connected && publicKey !== null && isLogin,
+        refetchInterval: 30000,
     });
     return (
         <div className="flex-1 sci-container relative z-1">

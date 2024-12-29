@@ -3,15 +3,40 @@ import { useWalletMultiButton } from '@solana/wallet-adapter-base-ui';
 import { LogOut, WalletIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useWalletModal } from '@solana/wallet-adapter-react-ui';
+import { useEffect } from 'react';
+import useSiws from '../hooks/use-siws';
+import { useAtom, useSetAtom } from 'jotai';
+import { isLoginAtom, tokenAtom } from '@/features/auth/atom/auth';
+import { login } from '@/features/auth/api/auth';
 
 const ConnectWallet = () => {
     const { setVisible: setModalVisible } = useWalletModal();
+    const { createSolanaMessage } = useSiws();
+    const [isLogin, setIsLogin] = useAtom(isLoginAtom);
+    const setToken = useSetAtom(tokenAtom);
     const { buttonState, onConnect, onDisconnect, publicKey } = useWalletMultiButton({
         onSelectWallet() {
             setModalVisible(true);
-        },
+        }
     });
-    
+
+    useEffect(() => {
+        if (buttonState === 'connected' && !isLogin) {
+            createSolanaMessage().then(async ({signature, payload}) => {
+                const res = await login({ signature, publicKey: publicKey?.toString() || '', payload });
+                console.log(res);
+                setToken(res.accessToken);
+                setIsLogin(true);
+            }).catch((error) => {
+                console.log(error);
+                onDisconnect?.();
+            });
+        } else if (buttonState === 'no-wallet') {
+            setIsLogin(false);
+            setToken("");
+        }
+    }, [buttonState, isLogin]);
+
     const handleConnect = () => {
         switch (buttonState) {
             case 'no-wallet':
@@ -25,7 +50,7 @@ const ConnectWallet = () => {
         }
     }
 
-    if (buttonState === 'connected') {
+    if (buttonState === 'connected' && isLogin) {
         return (
             <motion.button
                 className='relative flex justify-center items-center gap-2 [background:rgba(255,255,255,0.12)] backdrop-blur-[20px] px-5 py-4 rounded-[215.5px] overflow-hidden'

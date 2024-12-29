@@ -10,7 +10,9 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <QueryClientProvider client={queryClient}>
       <JotaiProvider>
-        <AppWalletProvider>{children}</AppWalletProvider>
+        <AppWalletProvider>
+            {children}
+        </AppWalletProvider>
       </JotaiProvider>
     </QueryClientProvider>
   );
