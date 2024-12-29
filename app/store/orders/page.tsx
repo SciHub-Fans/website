@@ -31,8 +31,8 @@ const StorePage = () => {
                     <TableHeader>
                         <TableRow>
                             <TableHead>Order ID</TableHead>
-                            <TableHead>Product</TableHead>
-                            <TableHead>Total Amount</TableHead>
+                            <TableHead className="min-w-[180px]">Product</TableHead>
+                            <TableHead className="min-w-[150px]">Total Amount</TableHead>
                             <TableHead>Status</TableHead>
                             <TableHead>Shiping Infomation</TableHead>
                         </TableRow>
@@ -40,9 +40,9 @@ const StorePage = () => {
                     <TableBody>
                         {orders?.map((order, index) => (
                             <TableRow key={index}>
-                                <TableCell>
+                                <TableCell className="max-w-[100px] md:max-w-full">
                                     <div>
-                                        <div>{order.id}</div>
+                                        <div className="truncate">{order.id}</div>
                                         <div className="text-xs text-[#A5A5A5]">{(new Date(order.createdAt)).toLocaleDateString()}</div>
                                     </div>
                                 </TableCell>
