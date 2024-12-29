@@ -11,9 +11,6 @@ import { OrderSummary } from "@/features/store/components/checkout/order-summary
 import { toast } from "sonner";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { Header } from "@/features/store/components/header";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { ArrowLeftIcon } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
 import { createOrder, TCreateOrderBody } from "@/features/store/api/order";
 import usePayment from "@/features/solana/hooks/use-payment";
