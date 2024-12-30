@@ -34,7 +34,7 @@ export function Header(props: {back?: boolean} = {back: false}) {
           </div>
         }
       </div>
-      <div className="flex gap-4">
+      <div className="flex gap-1 md:gap-4">
         <Cart
           items={cartItems}
           onUpdateQuantity={updateQuantity}

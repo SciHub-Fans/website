@@ -87,7 +87,7 @@ const ConnectWallet = () => {
 
     return (
         <button
-            className='flex justify-center items-center gap-2.5 self-stretch bg-white hover:bg-gray-100 text-black px-6 py-4 rounded-[44px]'
+            className='flex justify-center items-center gap-2.5 bg-white hover:bg-gray-100 text-black px-3 md:px-6 py-4 rounded-[44px] whitespace-nowrap'
             onClick={handleConnect}
         >
             Connect Wallet
