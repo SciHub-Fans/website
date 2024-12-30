@@ -1,6 +1,5 @@
 export enum Currency {
     SOL = 'SOL',
-    USDC = 'USDC',
     SCIHUB = 'SCIHUB',
 }
 

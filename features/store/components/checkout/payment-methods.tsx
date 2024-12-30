@@ -24,7 +24,7 @@ import { useEffect } from 'react';
 const TOKENS = [
   { symbol: 'SCIHUB', name: 'SciHub' },
   { symbol: 'SOL', name: 'Solana' },
-  { symbol: 'USDC', name: 'USD Coin' },
+  // { symbol: 'USDC', name: 'USD Coin' },
 ];
 
 interface PaymentMethodsProps {

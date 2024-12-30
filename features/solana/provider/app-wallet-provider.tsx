@@ -20,7 +20,7 @@ export default function AppWalletProvider({
   children: React.ReactNode;
 }) {
   const network = WalletAdapterNetwork.Mainnet;
-  const endpoint = useMemo(() => "https://mainnet.helius-rpc.com/?api-key=a28a5282-ad6e-4ae4-aa83-a78a55d0c806", [network]);
+  const endpoint = useMemo(() => process.env.NEXT_PUBLIC_SOLANA_RPC_URL, [network]);
   console.log("endpoint", endpoint);
   const wallets = useMemo(
     () => [
@@ -33,7 +33,7 @@ export default function AppWalletProvider({
   );
 
   return (
-    <ConnectionProvider endpoint={endpoint}>
+    <ConnectionProvider endpoint={endpoint || ""}>
       <WalletProvider wallets={wallets} autoConnect>
         <WalletModalProvider>{children}</WalletModalProvider>
       </WalletProvider>

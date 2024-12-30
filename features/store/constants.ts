@@ -9,6 +9,6 @@ export const COUNTRIES = [
 
 export const TOKEN_ADDRESS = {
   [Currency.SOL]: new PublicKey("So11111111111111111111111111111111111111112"),
-  [Currency.USDC]: new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"),
+  // [Currency.USDC]: new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"),
   [Currency.SCIHUB]: new PublicKey("GxdTh6udNstGmLLk9ztBb6bkrms7oLbrJp5yzUaVpump"),
 }
