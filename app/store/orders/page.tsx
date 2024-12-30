@@ -15,6 +15,8 @@ import { useQuery } from "@tanstack/react-query";
 import { getOrdersByWalletAddress } from "@/features/store/api/order";
 import { isLoginAtom } from "@/features/auth/atom/auth";
 import { useAtomValue } from "jotai";
+import { toast } from "sonner";
+import { StoreIcons } from "@/components/icons";
 
 const StorePage = () => {
     const { publicKey, connected } = useWallet();
@@ -34,7 +36,7 @@ const StorePage = () => {
                     <TableCaption>Orders</TableCaption>
                     <TableHeader>
                         <TableRow>
-                            <TableHead>Order ID</TableHead>
+                            <TableHead className="min-w-[180px]">Order ID</TableHead>
                             <TableHead className="min-w-[180px]">Product</TableHead>
                             <TableHead className="min-w-[150px]">Total Amount</TableHead>
                             <TableHead>Status</TableHead>
@@ -46,7 +48,10 @@ const StorePage = () => {
                             <TableRow key={index}>
                                 <TableCell className="max-w-[100px] md:max-w-full">
                                     <div>
-                                        <div className="truncate">{order.id}</div>
+                                        <div className="truncate cursor-pointer" onClick={() => {
+                                            navigator.clipboard.writeText(order.id)
+                                            toast.success("Copied to clipboard")
+                                        }}><StoreIcons.copy className="w-4 h-4 inline-block text-white" />{order.id}</div>
                                         <div className="text-xs text-[#A5A5A5]">{(new Date(order.createdAt)).toLocaleDateString()}</div>
                                     </div>
                                 </TableCell>
