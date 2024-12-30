@@ -65,41 +65,46 @@ export function Cart({
                   className="object-cover"
                 />
               </div>
-              <div className="flex-1">
-                <h4 className="font-semibold">{item.product.name}</h4>
-                <p className="text-sm text-muted-foreground">
-                  {item.product.variantOptions[0].name}: {item.selectedVariant.variantValues[0].value}
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  ${item.selectedVariant.price || item.product.price}
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={() => onUpdateQuantity(item.product.id, item.selectedVariant.id, item.buyQuantity - 1)}
-                  disabled={item.buyQuantity <= 1}
-                >
-                  -
-                </Button>
-                <span>{item.buyQuantity}</span>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={() => onUpdateQuantity(item.product.id, item.selectedVariant.id, item.buyQuantity + 1)}
-                  disabled={item.buyQuantity >= item.selectedVariant.quantity}
-                >
-                  +
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="text-destructive hover:text-destructive/90"
-                  onClick={() => handleRemove(item.product.id, item.selectedVariant.id, item.product.name)}
-                >
-                  <Trash2 className="h-4 w-4" />
-                </Button>
+              <div className="flex flex-col md:flex-row">
+                <div className="flex-1">
+                  <h4 className="font-semibold">{item.product.name}</h4>
+                  <div className="flex flex-row md:flex-col items-center md:items-start">
+                    <p className="text-sm text-muted-foreground">
+                      {item.product.variantOptions[0].name}: {item.selectedVariant.variantValues[0].value}
+                    </p>
+                    <div className="md:hidden px-2 text-xs text-muted-foreground">|</div>
+                    <p className="text-sm text-muted-foreground">
+                      ${item.selectedVariant.price || item.product.price}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={() => onUpdateQuantity(item.product.id, item.selectedVariant.id, item.buyQuantity - 1)}
+                    disabled={item.buyQuantity <= 1}
+                  >
+                    -
+                  </Button>
+                  <span>{item.buyQuantity}</span>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={() => onUpdateQuantity(item.product.id, item.selectedVariant.id, item.buyQuantity + 1)}
+                    disabled={item.buyQuantity >= item.selectedVariant.quantity}
+                  >
+                    +
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="text-destructive hover:text-destructive/90"
+                    onClick={() => handleRemove(item.product.id, item.selectedVariant.id, item.product.name)}
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
+                </div>
               </div>
             </div>
           ))}

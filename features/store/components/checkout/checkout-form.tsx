@@ -143,7 +143,7 @@ export function CheckoutForm({ form }: CheckoutFormProps) {
               )}
             />
 
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
               <FormField
                 control={form.control}
                 name="city"

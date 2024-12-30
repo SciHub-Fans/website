@@ -16,7 +16,7 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
-  const { addToCart } = useCartStore();
+  const { addToCart, cartItems } = useCartStore();
   const [selectedVariantId, setSelectedVariantId] = useState<string>("");
   const sizeOptions = extractSizeOptions(product);
 
@@ -27,6 +27,11 @@ export function ProductCard({ product }: ProductCardProps) {
     }
 
     const variant = product.variants.find(v => v.id === selectedVariantId);
+    const existingItem = cartItems.find(item => item.product.id === product.id && item.selectedVariant.id === selectedVariantId);
+    if((existingItem?.buyQuantity || 0) + 1 > (variant?.quantity || 0)) {
+      toast.error("Not enough stock");
+      return;
+    }
     if (!variant) {
       toast.error("Product variant not found");
       return;

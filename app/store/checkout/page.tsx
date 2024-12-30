@@ -108,8 +108,10 @@ export default function CheckoutPage() {
 
   if (cartItems.length === 0) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
+      <div className="flex flex-col relative z-1 min-h-screen">
+        <Header back />
+
+        <div className="flex-1 flex flex-col items-center justify-center text-center">
           <h2 className="text-2xl font-semibold mb-2">Cart is empty</h2>
           <p className="text-muted-foreground mb-4">
             Please add items to your cart first
