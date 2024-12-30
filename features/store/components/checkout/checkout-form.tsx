@@ -134,7 +134,7 @@ export function CheckoutForm({ form }: CheckoutFormProps) {
               name="address2"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Address 2</FormLabel>
+                  <FormLabel>Address 2 (optional)</FormLabel>
                   <FormControl>
                     <Input placeholder="Apartment, suite, etc. (optional)" {...field} />
                   </FormControl>

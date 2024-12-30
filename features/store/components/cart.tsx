@@ -71,7 +71,7 @@ export function Cart({
                   {item.product.variantOptions[0].name}: {item.selectedVariant.variantValues[0].value}
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  ¥{item.selectedVariant.price || item.product.price}
+                  ${item.selectedVariant.price || item.product.price}
                 </p>
               </div>
               <div className="flex items-center gap-2">
@@ -108,7 +108,7 @@ export function Cart({
           <div className="mt-8">
             <div className="flex justify-between text-lg font-semibold">
               <span>Total</span>
-              <span>¥{total}</span>
+              <span>${total}</span>
             </div>
             <Button className="mt-4 w-full rounded-[44px]" onClick={onCheckout}>
               Checkout

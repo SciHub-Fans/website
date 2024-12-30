@@ -87,10 +87,10 @@ export function OrderSummary({
         </div>
 
         <div className="space-y-3">
-          <div className="flex justify-between text-gray-400">
+          {/* <div className="flex justify-between text-gray-400">
             <span>Subtotal</span>
             <span>${subtotal}</span>
-          </div>
+          </div> */}
           <div className="flex justify-between text-gray-400 border-t border-gray-800 pt-3">
             <span>Total (USD)</span>
             <span>${totalUSD}</span>

@@ -10,5 +10,5 @@ export const isLoginAtom = atomWithStorage<boolean>("isLogin", false, {
     removeItem: async (key) => {
         localStorage.removeItem(key);
     }
-}, {getOnInit: true});
+}, {getOnInit: false});
 export const tokenAtom = atomWithStorage<string>("token", "");
