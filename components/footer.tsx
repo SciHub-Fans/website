@@ -46,6 +46,13 @@ const Footer = () => {
             >
               <Icons.x className="w-5 h-5" />
             </Link>
+            <Link
+              href="https://github.com/AmazingAng/scihub-paradigm/blob/main/draft_scihub_paradigm.pdf"
+              target="_blank"
+              className="flex justify-center items-center [background:rgba(255,255,255,0.12)] backdrop-blur-[20px] p-4 rounded-full"
+            >
+              <Icons.whitepaper className="w-5 h-5" />
+            </Link>
           </div>
         </div>
         <div className="flex flex-col items-start gap-3 flex-[1_0_0] backdrop-blur-[20px] p-6 md:p-12">
