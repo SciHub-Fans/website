@@ -47,7 +47,7 @@ const Footer = () => {
               <Icons.x className="w-5 h-5" />
             </Link>
             <Link
-              href="/draft_scihub_paradigm.pdf"
+              href="/scihub_paradigm.pdf"
               target="_blank"
               className="flex justify-center items-center [background:rgba(255,255,255,0.12)] backdrop-blur-[20px] p-4 rounded-full"
             >
