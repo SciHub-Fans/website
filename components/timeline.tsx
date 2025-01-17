@@ -19,14 +19,15 @@ const TIMELINE_ITEMS = [
   },
   {
     status: "completed",
-    time: "December 16, 2024",
+    time: "December 16th, 2024",
     supply: "10M $scihub (1% of the total supply)",
     href: "https://solscan.io/tx/5Vk1afKAKCvP35AdJJKHEsZdXRoeUK1QcNgKavQ1BA1NxfvirQNGFkyhKBgyDYbN4dYhLXEdE3v4khG5ZafqY6x2"
   },
   {
-    status: "upcoming",
-    time: "January 16, 2025",
+    status: "completed",
+    time: "January 16th, 2025",
     supply: "10M $scihub (1% of the total supply)",
+    href: "https://solscan.io/tx/uYceHVxcR3ChoLkaafvGCW71ukEmoB87MJhrzEDBeonwgNocKRFFmi2YJn3V1oARbgnCBxFKTFLgzveshzBa1Gw"
   },
   {
     status: "pending",

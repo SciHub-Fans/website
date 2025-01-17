@@ -77,7 +77,7 @@ const DonationProgress = () => {
         >
           <div className="text-white text-[18px] md:text-[22px] font-bold leading-[160%]">
             <span className="text-[#E32D2D] text-[20px] md:text-[32px]">
-              12%
+              13%
             </span>{" "}
             of 20% total allocation
           </div>
@@ -86,12 +86,12 @@ const DonationProgress = () => {
               NEXT DONATION
             </span>
             <span className="text-white text-base font-bold leading-[160%]">
-              Jan 16th, 2025
+              February 16th, 2025
             </span>
           </div>
         </motion.div>
 
-        <ProgressBar current={12} total={20} isInView={isInView} />
+        <ProgressBar current={13} total={20} isInView={isInView} />
 
         <motion.div
           className="hidden md:flex w-full h-auto relative"
