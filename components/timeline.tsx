@@ -39,11 +39,13 @@ const TIMELINE_ITEMS = [
     status: "pending",
     time: "March 16, 2025",
     supply: "10M $scihub (1% of the total supply)",
+    href: "https://solscan.io/tx/5TYkRbHehjUeBGkEfksPjEXnr1JgkoqaX2cjLomyF21xRYzAfUHnQM2cD1xPersU6iVoax8ypK51idVVV9xqdxna"
   },
   {
     status: "pending",
     time: "April 16, 2025",
     supply: "10M $scihub (1% of the total supply)",
+    href: "https://solscan.io/tx/ndayXpjFqscZY94ydTtJxdoR7pJutHegNZgfUjB67iYBqicggeWkq3DUfkZpqHDnYQ6TWYjUK71C96paF4V23qW"
   },
   {
     status: "pending",
